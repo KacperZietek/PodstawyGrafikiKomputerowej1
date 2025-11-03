@@ -5,6 +5,8 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
 #include <vector>
+#include <string>
+#include <cmath>
 
 class MyGame : public Engine {
 private:
@@ -12,66 +14,87 @@ private:
     std::vector<Point2D> points;
     std::vector<LineSegment> segments;
     bool use_incremental_algorithm;
+    bool show_circle;
 
 public:
-    virtual void update(float delta_time) override {
-    }
+    MyGame() : use_incremental_algorithm(false), show_circle(true) {}
+
+    virtual void update(float delta_time) override {}
 
     virtual void render() override {
-        // Czyszczenie ekranu
         clear_screen(al_map_rgb(0, 0, 0));
 
-        // Rysowanie wszystkich punktów
-        renderer.setColor(255, 255, 0); // ¯ó³ty
-        for (const auto& point : points) {
-            point.draw(&renderer);
-        }
+        // Punkty
+        renderer.setColor(255, 255, 0);
+        for (const auto& p : points)
+            p.draw(&renderer);
 
-        // Rysowanie odcinków z wybranym algorytmem
-        renderer.setColor(255, 0, 0); // Czerwony
-        for (const auto& segment : segments) {
+        // Odcinki
+        renderer.setColor(255, 0, 0);
+        for (const auto& seg : segments) {
             LineAlgorithm algo = use_incremental_algorithm ? INCREMENTAL : DEFAULT;
-            segment.draw(&renderer, algo);
+            seg.draw(&renderer, algo);
         }
 
-        // Rysowanie linii lamanej
-        renderer.setColor(0, 255, 0); // Zielony
+        // Åamana
+        renderer.setColor(0, 255, 0);
         renderer.drawPolyline(points, false);
 
-        // Informacje
-        renderer.setColor(255, 255, 255);
+        // OkrÄ…g na Å›rodku ekranu
+        if (show_circle) {
+            renderer.setColor(0, 128, 255);
+            renderer.drawCircleSymmetric(512, 384, 100, true);
+        }
+
+
         if (get_font()) {
-            std::string algorithm_text = use_incremental_algorithm ?
-                "Algorithm: INCREMENTAL" : "Algorithm: DEFAULT";
-            al_draw_text(get_font(), al_map_rgb(255, 255, 255), 10, 10, 0,
-                        algorithm_text.c_str());
-            al_draw_text(get_font(), al_map_rgb(255, 255, 255), 10, 30, 0,
-                        "Press SPACE to change algorithm, ESC to exit");
+            std::string alg = use_incremental_algorithm ? "INCREMENTAL" : "DEFAULT";
+            al_draw_text(get_font(), al_map_rgb(255,255,255), 10, 10, 0, ("Algorytm: " + alg).c_str());
+            al_draw_text(get_font(), al_map_rgb(255,255,255), 10, 30, 0,
+                "LPM - dodaj punkt | PPM - czysc | R - obrot | S - skalowanie | T - przesuniecie | O - okrag");
         }
     }
 
     virtual void on_key_press(int key) override {
-        if (key == ALLEGRO_KEY_ESCAPE) {
+        if (key == ALLEGRO_KEY_ESCAPE)
             stop();
-        }
-        if (key == ALLEGRO_KEY_SPACE) {
+
+        if (key == ALLEGRO_KEY_SPACE)
             use_incremental_algorithm = !use_incremental_algorithm;
+
+
+        if (key == ALLEGRO_KEY_O)
+            show_circle = !show_circle;
+
+        if (key == ALLEGRO_KEY_R) {
+            float cx = 512.0f, cy = 384.0f;
+            for (auto& p : points)
+                p.rotate(15.0f, cx, cy);
+        }
+
+        if (key == ALLEGRO_KEY_S) {
+            float cx = 512.0f, cy = 384.0f;
+            for (auto& p : points) {
+                p.translate(-cx, -cy);
+                p.scale(1.1f, 1.1f);
+                p.translate(cx, cy);
+            }
+        }
+
+
+        if (key == ALLEGRO_KEY_T) {
+            for (auto& p : points)
+                p.translate(10.0f, 10.0f);
         }
     }
 
     virtual void on_mouse_click(int button, int x, int y) override {
-        if (button == 1) { // Lewy przycisk - dodaj punkt
+        if (button == 1) {
             points.push_back(Point2D(x, y));
-
-            // Jezeli mamy przynajmniej 2 punkty, tworzymy odcinek
-            if (points.size() >= 2) {
-                segments.push_back(LineSegment(
-                    points[points.size()-2],
-                    points[points.size()-1]
-                ));
-            }
+            if (points.size() >= 2)
+                segments.push_back(LineSegment(points[points.size() - 2], points.back()));
         }
-        else if (button == 2) { // Prawy przycisk - wyczysc
+        else if (button == 2) {
             points.clear();
             segments.clear();
         }
@@ -79,28 +102,16 @@ public:
 
     void initialize_game() {
         use_incremental_algorithm = false;
-
-        // Przykladowe punkty i odcinki
-        points.push_back(Point2D(100, 100));
-        points.push_back(Point2D(200, 150));
-        points.push_back(Point2D(300, 80));
-        points.push_back(Point2D(400, 200));
-
-        segments.push_back(LineSegment(100, 300, 400, 350));
-        segments.push_back(LineSegment(150, 400, 350, 250));
+        show_circle = true;
     }
 };
 
 int main() {
     MyGame game;
-
-    // Inicjalizacja z podwójnym buforowaniem
-    if (!game.initialize(1024, 768, WINDOWED, 60, true)) {
+    if (!game.initialize(1024, 768, WINDOWED, 60, true))
         return -1;
-    }
 
     game.initialize_game();
     game.run();
-
     return 0;
 }
