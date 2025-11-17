@@ -362,11 +362,11 @@
 	"Point2D.h"
 	"LineSegment.h"
 
-1761592207 source:c:\users\pc\desktop\silnik2d\engine.cpp
+1763421338 source:c:\users\pc\desktop\silnik2d\engine.cpp
 	"Engine.h"
 	<iostream>
 
-1761592409 c:\users\pc\desktop\silnik2d\engine.h
+1763421338 c:\users\pc\desktop\silnik2d\engine.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_image.h>
 	<allegro5/allegro_font.h>
@@ -375,7 +375,7 @@
 	<string>
 	<fstream>
 
-1761592409 source:c:\users\pc\desktop\silnik2d\engine.h
+1763421338 source:c:\users\pc\desktop\silnik2d\engine.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_image.h>
 	<allegro5/allegro_font.h>
@@ -384,24 +384,24 @@
 	<string>
 	<fstream>
 
-1761590794 source:c:\users\pc\desktop\silnik2d\linesegment.cpp
+1763421338 source:c:\users\pc\desktop\silnik2d\linesegment.cpp
 	"LineSegment.h"
 	"PrimitiveRenderer.h"
 	<cmath>
 
-1761592421 c:\users\pc\desktop\silnik2d\linesegment.h
+1763421338 c:\users\pc\desktop\silnik2d\linesegment.h
 	"Point2D.h"
 
-1761590833 c:\users\pc\desktop\silnik2d\point2d.h
+1763421338 c:\users\pc\desktop\silnik2d\point2d.h
 
-1761592431 c:\users\pc\desktop\silnik2d\primitiverenderer.h
+1763421338 c:\users\pc\desktop\silnik2d\primitiverenderer.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_primitives.h>
 	<vector>
 	"Point2D.h"
 	"LineSegment.h"
 
-1761592421 source:c:\users\pc\desktop\silnik2d\linesegment.h
+1763421338 source:c:\users\pc\desktop\silnik2d\linesegment.h
 	"Point2D.h"
 
 1761592350 source:c:\users\pc\desktop\silnik2d\main.cpp
@@ -413,18 +413,18 @@
 	<allegro5/allegro_primitives.h>
 	<vector>
 
-1761592376 source:c:\users\pc\desktop\silnik2d\point2d.cpp
+1763421338 source:c:\users\pc\desktop\silnik2d\point2d.cpp
 	"Point2D.h"
 	"PrimitiveRenderer.h"
 
-1761590833 source:c:\users\pc\desktop\silnik2d\point2d.h
+1763421338 source:c:\users\pc\desktop\silnik2d\point2d.h
 
-1761592400 source:c:\users\pc\desktop\silnik2d\primitiverenderer.cpp
+1763421338 source:c:\users\pc\desktop\silnik2d\primitiverenderer.cpp
 	"PrimitiveRenderer.h"
 	<cmath>
 	<algorithm>
 
-1761592110 source:c:\users\pc\desktop\silnik2d\primitiverenderer.h
+1763421338 source:c:\users\pc\desktop\silnik2d\primitiverenderer.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_primitives.h>
 	<vector>

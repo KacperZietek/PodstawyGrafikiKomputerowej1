@@ -18,7 +18,7 @@ public:
     }
 
     virtual void render() override {
-        // Czyszczenie ekranu
+        // Czyszczenie ekranu safd
         clear_screen(al_map_rgb(0, 0, 0));
 
         // Rysowanie wszystkich punktów
