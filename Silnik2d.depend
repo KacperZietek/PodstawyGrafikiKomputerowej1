@@ -1103,3 +1103,390 @@
 1732761303 c:\users\adrian\desktop\silnik2d\allegro\include\allegro5\allegro_primitives.h
 	<allegro5/allegro.h>
 
+1763417698 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\engine.cpp
+	"Engine.h"
+	<iostream>
+
+1763417698 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\engine.h
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<allegro5/allegro_primitives.h>
+	<string>
+	<fstream>
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\allegro.h
+	"allegro5/base.h"
+	"allegro5/altime.h"
+	"allegro5/bitmap.h"
+	"allegro5/bitmap_draw.h"
+	"allegro5/bitmap_io.h"
+	"allegro5/bitmap_lock.h"
+	"allegro5/blender.h"
+	"allegro5/clipboard.h"
+	"allegro5/color.h"
+	"allegro5/config.h"
+	"allegro5/cpu.h"
+	"allegro5/debug.h"
+	"allegro5/display.h"
+	"allegro5/drawing.h"
+	"allegro5/error.h"
+	"allegro5/events.h"
+	"allegro5/file.h"
+	"allegro5/fixed.h"
+	"allegro5/fmaths.h"
+	"allegro5/fshook.h"
+	"allegro5/fullscreen_mode.h"
+	"allegro5/haptic.h"
+	"allegro5/joystick.h"
+	"allegro5/keyboard.h"
+	"allegro5/memory.h"
+	"allegro5/monitor.h"
+	"allegro5/mouse.h"
+	"allegro5/mouse_cursor.h"
+	"allegro5/path.h"
+	"allegro5/render_state.h"
+	"allegro5/shader.h"
+	"allegro5/system.h"
+	"allegro5/threads.h"
+	"allegro5/timer.h"
+	"allegro5/tls.h"
+	"allegro5/touch_input.h"
+	"allegro5/transformations.h"
+	"allegro5/utf8.h"
+	"allegro5/alcompat.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\base.h
+	<errno.h>
+	<limits.h>
+	<limits.h>
+	<stdarg.h>
+	<stddef.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<sys/types.h>
+	<fortify/fortify.h>
+	<dmalloc.h>
+	"allegro5/internal/alconfig.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\internal\alconfig.h
+	"allegro5/platform/alplatf.h"
+	"allegro5/platform/alwatcom.h"
+	"allegro5/platform/almngw32.h"
+	"allegro5/platform/albcc32.h"
+	"allegro5/platform/almsvc.h"
+	"allegro5/platform/aliphonecfg.h"
+	"allegro5/platform/alosxcfg.h"
+	"allegro5/platform/alandroidcfg.h"
+	"allegro5/platform/alraspberrypicfg.h"
+	"allegro5/platform/alucfg.h"
+	"allegro5/platform/allegro_sdl_config.h"
+	"allegro5/platform/astdint.h"
+	"allegro5/platform/astdbool.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\platform\alplatf.h
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\platform\alwatcom.h
+	<io.h>
+	<i86.h>
+	<conio.h>
+	<fcntl.h>
+	<direct.h>
+	<malloc.h>
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\platform\almngw32.h
+	<io.h>
+	<fcntl.h>
+	<direct.h>
+	<malloc.h>
+	"allegro5/platform/alplatf.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\platform\albcc32.h
+	<io.h>
+	<fcntl.h>
+	<direct.h>
+	<malloc.h>
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\platform\almsvc.h
+	<io.h>
+	<fcntl.h>
+	<direct.h>
+	<malloc.h>
+	"allegro5/platform/alplatf.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\platform\aliphonecfg.h
+	<fcntl.h>
+	<unistd.h>
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\platform\alosxcfg.h
+	"allegro5/platform/alplatf.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\platform\alandroidcfg.h
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\platform\alraspberrypicfg.h
+	<fcntl.h>
+	<unistd.h>
+	<sys/types.h>
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\platform\alucfg.h
+	<fcntl.h>
+	<unistd.h>
+	"alunix.h"
+	"allegro5/platform/alplatf.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\platform\alunix.h
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\platform\allegro_sdl_config.h
+	<fcntl.h>
+	<unistd.h>
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\platform\astdint.h
+	<inttypes.h>
+	<stdint.h>
+	<limits.h>
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\platform\astdbool.h
+	<stdbool.h>
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\altime.h
+	"allegro5/base.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\bitmap.h
+	"allegro5/color.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\color.h
+	"allegro5/base.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\bitmap_draw.h
+	"allegro5/bitmap.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\bitmap_io.h
+	"allegro5/bitmap.h"
+	"allegro5/file.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\file.h
+	"allegro5/base.h"
+	"allegro5/path.h"
+	"allegro5/utf8.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\path.h
+	"allegro5/base.h"
+	"allegro5/utf8.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\utf8.h
+	"allegro5/base.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\bitmap_lock.h
+	"allegro5/bitmap.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\blender.h
+	"allegro5/base.h"
+	"allegro5/color.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\clipboard.h
+	"allegro5/base.h"
+	"allegro5/display.h"
+	"allegro5/utf8.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\display.h
+	"allegro5/bitmap.h"
+	"allegro5/color.h"
+	"allegro5/events.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\events.h
+	"allegro5/altime.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\config.h
+	"allegro5/file.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\cpu.h
+	"allegro5/base.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\debug.h
+	<assert.h>
+	"allegro5/base.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\drawing.h
+	"allegro5/color.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\error.h
+	"allegro5/base.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\fixed.h
+	"allegro5/base.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\fmaths.h
+	"allegro5/base.h"
+	"allegro5/fixed.h"
+	"allegro5/inline/fmaths.inl"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\inline\fmaths.inl
+	"allegro5/error.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\fshook.h
+	"allegro5/base.h"
+	"allegro5/file.h"
+	"allegro5/path.h"
+	<sys/types.h>
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\fullscreen_mode.h
+	"allegro5/base.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\haptic.h
+	"allegro5/base.h"
+	"allegro5/display.h"
+	"allegro5/events.h"
+	"allegro5/joystick.h"
+	"allegro5/keyboard.h"
+	"allegro5/mouse.h"
+	"allegro5/touch_input.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\joystick.h
+	"allegro5/base.h"
+	"allegro5/events.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\keyboard.h
+	"allegro5/base.h"
+	"allegro5/events.h"
+	"allegro5/keycodes.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\keycodes.h
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\mouse.h
+	"allegro5/base.h"
+	"allegro5/events.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\touch_input.h
+	"allegro5/base.h"
+	"allegro5/events.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\memory.h
+	"allegro5/base.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\monitor.h
+	"allegro5/base.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\mouse_cursor.h
+	"allegro5/base.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\render_state.h
+	"allegro5/base.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\shader.h
+	"allegro5/base.h"
+	"allegro5/transformations.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\transformations.h
+	"allegro5/display.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\system.h
+	"allegro5/config.h"
+	"allegro5/path.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\threads.h
+	"allegro5/altime.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\timer.h
+	"allegro5/base.h"
+	"allegro5/events.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\tls.h
+	"allegro5/base.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\alcompat.h
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\allegro_image.h
+	"allegro5/base.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\allegro_font.h
+	"allegro5/allegro.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\allegro_ttf.h
+	"allegro5/allegro.h"
+	"allegro5/allegro_font.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\allegro\include\allegro5\allegro_primitives.h
+	<allegro5/allegro.h>
+
+1763417698 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\engine.h
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<allegro5/allegro_primitives.h>
+	<string>
+	<fstream>
+
+1763417697 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\linesegment.cpp
+	"LineSegment.h"
+	"PrimitiveRenderer.h"
+	<cmath>
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\linesegment.h
+	"Point2D.h"
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\point2d.h
+	<cmath>
+
+1763417697 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\primitiverenderer.h
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+	<vector>
+	<stack>
+	<queue>
+	<algorithm>
+	"Point2D.h"
+	"LineSegment.h"
+
+1763417697 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\linesegment.h
+	"Point2D.h"
+
+1763418533 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\main.cpp
+	"Engine.h"
+	"PrimitiveRenderer.h"
+	"Point2D.h"
+	"LineSegment.h"
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+	<vector>
+	<string>
+	<cmath>
+	<iostream>
+	"Player.h"
+
+1763417697 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\point2d.cpp
+	"Point2D.h"
+	"PrimitiveRenderer.h"
+
+1763417697 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\point2d.h
+	<cmath>
+
+1763417697 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\primitiverenderer.cpp
+	"PrimitiveRenderer.h"
+	<cmath>
+	<algorithm>
+	<stack>
+	<queue>
+	<set>
+	<iostream>
+
+1763417697 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\primitiverenderer.h
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+	<vector>
+	<stack>
+	<queue>
+	<algorithm>
+	"Point2D.h"
+	"LineSegment.h"
+
+1763418505 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\player.cpp
+	"Player.h"
+
+1763418493 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\podstawygrafikikomputerowej1\player.h
+	"Point2D.h"
+	"PrimitiveRenderer.h"
+	<allegro5/allegro.h>
+

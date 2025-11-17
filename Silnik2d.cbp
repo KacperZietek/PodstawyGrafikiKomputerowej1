@@ -65,6 +65,8 @@
 		<Unit filename="LineSegment.h">
 			<Option compile="1" />
 		</Unit>
+		<Unit filename="Player.cpp" />
+		<Unit filename="Player.h" />
 		<Unit filename="Point2D.cpp" />
 		<Unit filename="Point2D.h">
 			<Option compile="1" />

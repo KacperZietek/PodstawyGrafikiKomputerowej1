@@ -373,3 +373,69 @@
 [LOG] Game loop ended
 [LOG] Cleaning up resources...
 [LOG] Engine destructor called
+[LOG] Engine constructor called
+[LOG] Initializing engine...
+[LOG] Graphics initialized
+[LOG] Keyboard installed successfully
+[LOG] Mouse installed successfully
+[LOG] Double buffering enabled
+[LOG] Engine initialized successfully
+[LOG] Starting main game loop
+[LOG] Game loop ended
+[LOG] Cleaning up resources...
+[LOG] Engine destructor called
+[LOG] Engine constructor called
+[LOG] Initializing engine...
+[LOG] Graphics initialized
+[LOG] Keyboard installed successfully
+[LOG] Mouse installed successfully
+[LOG] Double buffering enabled
+[LOG] Engine initialized successfully
+[LOG] Starting main game loop
+[LOG] Game loop ended
+[LOG] Cleaning up resources...
+[LOG] Engine destructor called
+[LOG] Engine constructor called
+[LOG] Initializing engine...
+[LOG] Graphics initialized
+[LOG] Keyboard installed successfully
+[LOG] Mouse installed successfully
+[LOG] Double buffering enabled
+[LOG] Engine initialized successfully
+[LOG] Starting main game loop
+[LOG] Game loop ended
+[LOG] Cleaning up resources...
+[LOG] Engine destructor called
+[LOG] Engine constructor called
+[LOG] Initializing engine...
+[LOG] Graphics initialized
+[LOG] Keyboard installed successfully
+[LOG] Mouse installed successfully
+[LOG] Double buffering enabled
+[LOG] Engine initialized successfully
+[LOG] Starting main game loop
+[LOG] Game loop ended
+[LOG] Cleaning up resources...
+[LOG] Engine destructor called
+[LOG] Engine constructor called
+[LOG] Initializing engine...
+[LOG] Graphics initialized
+[LOG] Keyboard installed successfully
+[LOG] Mouse installed successfully
+[LOG] Double buffering enabled
+[LOG] Engine initialized successfully
+[LOG] Starting main game loop
+[LOG] Game loop ended
+[LOG] Cleaning up resources...
+[LOG] Engine destructor called
+[LOG] Engine constructor called
+[LOG] Initializing engine...
+[LOG] Graphics initialized
+[LOG] Keyboard installed successfully
+[LOG] Mouse installed successfully
+[LOG] Double buffering enabled
+[LOG] Engine initialized successfully
+[LOG] Starting main game loop
+[LOG] Game loop ended
+[LOG] Cleaning up resources...
+[LOG] Engine destructor called
