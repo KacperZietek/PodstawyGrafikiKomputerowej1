@@ -69,7 +69,7 @@ bool Engine::initialize(int width, int height, DisplayMode mode, int target_fps,
         al_register_event_source(event_queue, al_get_mouse_event_source());
     }
 
-    // Tworzenie bufora poœredniego jeœli podwójne buforowanie jest w³¹czone
+    // Tworzenie bufora poœredniego jesli podwojne buforowanie jest wlaczone
     if (double_buffering) {
         buffer = al_create_bitmap(screen_width, screen_height);
         if (!buffer) {

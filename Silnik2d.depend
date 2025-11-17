@@ -431,7 +431,7 @@
 	"Point2D.h"
 	"LineSegment.h"
 
-1762187530 source:c:\users\adrian\desktop\silnik2d\engine.cpp
+1763400241 source:c:\users\adrian\desktop\silnik2d\engine.cpp
 	"Engine.h"
 	<iostream>
 
@@ -758,17 +758,20 @@
 1762201218 c:\users\adrian\desktop\silnik2d\point2d.h
 	<cmath>
 
-1762201967 c:\users\adrian\desktop\silnik2d\primitiverenderer.h
+1763400241 c:\users\adrian\desktop\silnik2d\primitiverenderer.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_primitives.h>
 	<vector>
+	<stack>
+	<queue>
+	<algorithm>
 	"Point2D.h"
 	"LineSegment.h"
 
 1761592421 source:c:\users\adrian\desktop\silnik2d\linesegment.h
 	"Point2D.h"
 
-1762202428 source:c:\users\adrian\desktop\silnik2d\main.cpp
+1763399250 source:c:\users\adrian\desktop\silnik2d\main.cpp
 	"Engine.h"
 	"PrimitiveRenderer.h"
 	"Point2D.h"
@@ -778,6 +781,7 @@
 	<vector>
 	<string>
 	<cmath>
+	<iostream>
 
 1761592376 source:c:\users\adrian\desktop\silnik2d\point2d.cpp
 	"Point2D.h"
@@ -786,15 +790,22 @@
 1762201218 source:c:\users\adrian\desktop\silnik2d\point2d.h
 	<cmath>
 
-1762201967 source:c:\users\adrian\desktop\silnik2d\primitiverenderer.cpp
+1763400241 source:c:\users\adrian\desktop\silnik2d\primitiverenderer.cpp
 	"PrimitiveRenderer.h"
 	<cmath>
 	<algorithm>
+	<stack>
+	<queue>
+	<set>
+	<iostream>
 
-1762201967 source:c:\users\adrian\desktop\silnik2d\primitiverenderer.h
+1763400241 source:c:\users\adrian\desktop\silnik2d\primitiverenderer.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_primitives.h>
 	<vector>
+	<stack>
+	<queue>
+	<algorithm>
 	"Point2D.h"
 	"LineSegment.h"
 
