@@ -1,29 +1,39 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "Point2D.h"
+#include "UpdatableObject.h"
+#include "DrawableObject.h"
+#include "TransformableObject.h"
 #include "PrimitiveRenderer.h"
 #include <allegro5/allegro.h>
 
-class Player {
+class Player : public UpdatableObject, public DrawableObject, public TransformableObject {
 private:
-    Point2D position;
-    float radius;
-    float speed; // piksele na sekundê
-    ALLEGRO_COLOR color;
-
+    float x,y;
+    float angle; // degrees
+    float speed; // units per second
 public:
-    Player(float x = 100, float y = 100, float radius = 20, float speed = 200.0f);
+    Player(float x=0, float y=0) : x(x), y(y), angle(0), speed(100.0f) {}
+    virtual ~Player() = default;
 
-    void update(const ALLEGRO_KEYBOARD_STATE& key_state, float delta_time);
+    // UpdatableObject
+    void update(float dt) override;
 
-    void render(PrimitiveRenderer* renderer);
+    // DrawableObject
+    void draw(PrimitiveRenderer* renderer) const override;
 
-    // Gettery i settery
-    Point2D getPosition() const { return position; }
-    void setPosition(float x, float y) { position.setPosition(x, y); }
-    float getRadius() const { return radius; }
-    void setColor(ALLEGRO_COLOR c) { color = c; }
+    // TransformableObject
+    void translate(float dx, float dy) override { x += dx; y += dy; }
+    void rotate(float angle_deg, float cx=0.0f, float cy=0.0f) override { angle += angle_deg; }
+    void scale(float sx, float sy, float cx=0.0f, float cy=0.0f) override { (void)sx; (void)sy; (void)cx; (void)cy; /* opcjonalnie: zmiana rozmiaru */ }
+
+    // Input handler: uzyj w glownym loopie
+    void handleEvent(const ALLEGRO_EVENT& ev);
+
+    // getters
+    float getX() const { return x; }
+    float getY() const { return y; }
+    float getAngle() const { return angle; }
 };
 
-#endif
+#endif // PLAYER_H

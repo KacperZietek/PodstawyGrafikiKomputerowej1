@@ -1,9 +1,9 @@
 # depslib dependency file v1.0
-1761591107 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\engine.cpp
+1763424376 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\engine.cpp
 	"Engine.h"
 	<iostream>
 
-1761590840 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\engine.h
+1763421338 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\engine.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_image.h>
 	<allegro5/allegro_font.h>
@@ -12,7 +12,7 @@
 	<string>
 	<fstream>
 
-1732761303 d:\allegro\include\allegro5\allegro.h
+1761574244 d:\allegro\include\allegro5\allegro.h
 	"allegro5/base.h"
 	"allegro5/altime.h"
 	"allegro5/bitmap.h"
@@ -53,7 +53,7 @@
 	"allegro5/utf8.h"
 	"allegro5/alcompat.h"
 
-1732761303 d:\allegro\include\allegro5\base.h
+1761574246 d:\allegro\include\allegro5\base.h
 	<errno.h>
 	<limits.h>
 	<limits.h>
@@ -67,7 +67,7 @@
 	<dmalloc.h>
 	"allegro5/internal/alconfig.h"
 
-1732761303 d:\allegro\include\allegro5\internal\alconfig.h
+1761574273 d:\allegro\include\allegro5\internal\alconfig.h
 	"allegro5/platform/alplatf.h"
 	"allegro5/platform/alwatcom.h"
 	"allegro5/platform/almngw32.h"
@@ -82,9 +82,9 @@
 	"allegro5/platform/astdint.h"
 	"allegro5/platform/astdbool.h"
 
-1732761303 d:\allegro\include\allegro5\platform\alplatf.h
+1761574278 d:\allegro\include\allegro5\platform\alplatf.h
 
-1732761303 d:\allegro\include\allegro5\platform\alwatcom.h
+1761574279 d:\allegro\include\allegro5\platform\alwatcom.h
 	<io.h>
 	<i86.h>
 	<conio.h>
@@ -92,145 +92,145 @@
 	<direct.h>
 	<malloc.h>
 
-1732761303 d:\allegro\include\allegro5\platform\almngw32.h
+1761574278 d:\allegro\include\allegro5\platform\almngw32.h
 	<io.h>
 	<fcntl.h>
 	<direct.h>
 	<malloc.h>
 	"allegro5/platform/alplatf.h"
 
-1732761303 d:\allegro\include\allegro5\platform\albcc32.h
+1761574275 d:\allegro\include\allegro5\platform\albcc32.h
 	<io.h>
 	<fcntl.h>
 	<direct.h>
 	<malloc.h>
 
-1732761303 d:\allegro\include\allegro5\platform\almsvc.h
+1761574278 d:\allegro\include\allegro5\platform\almsvc.h
 	<io.h>
 	<fcntl.h>
 	<direct.h>
 	<malloc.h>
 	"allegro5/platform/alplatf.h"
 
-1732761303 d:\allegro\include\allegro5\platform\aliphonecfg.h
+1761574275 d:\allegro\include\allegro5\platform\aliphonecfg.h
 	<fcntl.h>
 	<unistd.h>
 
-1732761303 d:\allegro\include\allegro5\platform\alosxcfg.h
+1761574278 d:\allegro\include\allegro5\platform\alosxcfg.h
 	"allegro5/platform/alplatf.h"
 
-1732761303 d:\allegro\include\allegro5\platform\alandroidcfg.h
+1761574275 d:\allegro\include\allegro5\platform\alandroidcfg.h
 
-1732761303 d:\allegro\include\allegro5\platform\alraspberrypicfg.h
+1761574279 d:\allegro\include\allegro5\platform\alraspberrypicfg.h
 	<fcntl.h>
 	<unistd.h>
 	<sys/types.h>
 
-1732761303 d:\allegro\include\allegro5\platform\alucfg.h
+1761574279 d:\allegro\include\allegro5\platform\alucfg.h
 	<fcntl.h>
 	<unistd.h>
 	"alunix.h"
 	"allegro5/platform/alplatf.h"
 
-1732761303 d:\allegro\include\allegro5\platform\alunix.h
+1761574279 d:\allegro\include\allegro5\platform\alunix.h
 
-1732761303 d:\allegro\include\allegro5\platform\allegro_sdl_config.h
+1761574278 d:\allegro\include\allegro5\platform\allegro_sdl_config.h
 	<fcntl.h>
 	<unistd.h>
 
-1732761303 d:\allegro\include\allegro5\platform\astdint.h
+1761574286 d:\allegro\include\allegro5\platform\astdint.h
 	<inttypes.h>
 	<stdint.h>
 	<limits.h>
 
-1732761303 d:\allegro\include\allegro5\platform\astdbool.h
+1761574285 d:\allegro\include\allegro5\platform\astdbool.h
 	<stdbool.h>
 
-1732761303 d:\allegro\include\allegro5\altime.h
+1761574246 d:\allegro\include\allegro5\altime.h
 	"allegro5/base.h"
 
-1732761303 d:\allegro\include\allegro5\bitmap.h
+1761574246 d:\allegro\include\allegro5\bitmap.h
 	"allegro5/color.h"
 
-1732761303 d:\allegro\include\allegro5\color.h
+1761574246 d:\allegro\include\allegro5\color.h
 	"allegro5/base.h"
 
-1732761303 d:\allegro\include\allegro5\bitmap_draw.h
+1761574246 d:\allegro\include\allegro5\bitmap_draw.h
 	"allegro5/bitmap.h"
 
-1732761303 d:\allegro\include\allegro5\bitmap_io.h
+1761574246 d:\allegro\include\allegro5\bitmap_io.h
 	"allegro5/bitmap.h"
 	"allegro5/file.h"
 
-1732761303 d:\allegro\include\allegro5\file.h
+1761574271 d:\allegro\include\allegro5\file.h
 	"allegro5/base.h"
 	"allegro5/path.h"
 	"allegro5/utf8.h"
 
-1732761303 d:\allegro\include\allegro5\path.h
+1761574272 d:\allegro\include\allegro5\path.h
 	"allegro5/base.h"
 	"allegro5/utf8.h"
 
-1732761303 d:\allegro\include\allegro5\utf8.h
+1761574273 d:\allegro\include\allegro5\utf8.h
 	"allegro5/base.h"
 
-1732761303 d:\allegro\include\allegro5\bitmap_lock.h
+1761574246 d:\allegro\include\allegro5\bitmap_lock.h
 	"allegro5/bitmap.h"
 
-1732761303 d:\allegro\include\allegro5\blender.h
+1761574246 d:\allegro\include\allegro5\blender.h
 	"allegro5/base.h"
 	"allegro5/color.h"
 
-1732761303 d:\allegro\include\allegro5\clipboard.h
+1761574246 d:\allegro\include\allegro5\clipboard.h
 	"allegro5/base.h"
 	"allegro5/display.h"
 	"allegro5/utf8.h"
 
-1732761303 d:\allegro\include\allegro5\display.h
+1761574247 d:\allegro\include\allegro5\display.h
 	"allegro5/bitmap.h"
 	"allegro5/color.h"
 	"allegro5/events.h"
 
-1732761303 d:\allegro\include\allegro5\events.h
+1761574271 d:\allegro\include\allegro5\events.h
 	"allegro5/altime.h"
 
-1732761303 d:\allegro\include\allegro5\config.h
+1761574246 d:\allegro\include\allegro5\config.h
 	"allegro5/file.h"
 
-1732761303 d:\allegro\include\allegro5\cpu.h
+1761574247 d:\allegro\include\allegro5\cpu.h
 	"allegro5/base.h"
 
-1732761303 d:\allegro\include\allegro5\debug.h
+1761574247 d:\allegro\include\allegro5\debug.h
 	<assert.h>
 	"allegro5/base.h"
 
-1732761303 d:\allegro\include\allegro5\drawing.h
+1761574271 d:\allegro\include\allegro5\drawing.h
 	"allegro5/color.h"
 
-1732761303 d:\allegro\include\allegro5\error.h
+1761574271 d:\allegro\include\allegro5\error.h
 	"allegro5/base.h"
 
-1732761303 d:\allegro\include\allegro5\fixed.h
+1761574271 d:\allegro\include\allegro5\fixed.h
 	"allegro5/base.h"
 
-1732761303 d:\allegro\include\allegro5\fmaths.h
+1761574271 d:\allegro\include\allegro5\fmaths.h
 	"allegro5/base.h"
 	"allegro5/fixed.h"
 	"allegro5/inline/fmaths.inl"
 
-1732761303 d:\allegro\include\allegro5\inline\fmaths.inl
+1761574273 d:\allegro\include\allegro5\inline\fmaths.inl
 	"allegro5/error.h"
 
-1732761303 d:\allegro\include\allegro5\fshook.h
+1761574271 d:\allegro\include\allegro5\fshook.h
 	"allegro5/base.h"
 	"allegro5/file.h"
 	"allegro5/path.h"
 	<sys/types.h>
 
-1732761303 d:\allegro\include\allegro5\fullscreen_mode.h
+1761574272 d:\allegro\include\allegro5\fullscreen_mode.h
 	"allegro5/base.h"
 
-1732761303 d:\allegro\include\allegro5\haptic.h
+1761574272 d:\allegro\include\allegro5\haptic.h
 	"allegro5/base.h"
 	"allegro5/display.h"
 	"allegro5/events.h"
@@ -239,74 +239,74 @@
 	"allegro5/mouse.h"
 	"allegro5/touch_input.h"
 
-1732761303 d:\allegro\include\allegro5\joystick.h
+1761574272 d:\allegro\include\allegro5\joystick.h
 	"allegro5/base.h"
 	"allegro5/events.h"
 
-1732761303 d:\allegro\include\allegro5\keyboard.h
+1761574272 d:\allegro\include\allegro5\keyboard.h
 	"allegro5/base.h"
 	"allegro5/events.h"
 	"allegro5/keycodes.h"
 
-1732761303 d:\allegro\include\allegro5\keycodes.h
+1761574272 d:\allegro\include\allegro5\keycodes.h
 
-1732761303 d:\allegro\include\allegro5\mouse.h
+1761574272 d:\allegro\include\allegro5\mouse.h
 	"allegro5/base.h"
 	"allegro5/events.h"
 
-1732761303 d:\allegro\include\allegro5\touch_input.h
+1761574273 d:\allegro\include\allegro5\touch_input.h
 	"allegro5/base.h"
 	"allegro5/events.h"
 
-1732761303 d:\allegro\include\allegro5\memory.h
+1761574272 d:\allegro\include\allegro5\memory.h
 	"allegro5/base.h"
 
-1732761303 d:\allegro\include\allegro5\monitor.h
+1761574272 d:\allegro\include\allegro5\monitor.h
 	"allegro5/base.h"
 
-1732761303 d:\allegro\include\allegro5\mouse_cursor.h
+1761574272 d:\allegro\include\allegro5\mouse_cursor.h
 	"allegro5/base.h"
 
-1732761303 d:\allegro\include\allegro5\render_state.h
+1761574273 d:\allegro\include\allegro5\render_state.h
 	"allegro5/base.h"
 
-1732761303 d:\allegro\include\allegro5\shader.h
+1761574273 d:\allegro\include\allegro5\shader.h
 	"allegro5/base.h"
 	"allegro5/transformations.h"
 
-1732761303 d:\allegro\include\allegro5\transformations.h
+1761574273 d:\allegro\include\allegro5\transformations.h
 	"allegro5/display.h"
 
-1732761303 d:\allegro\include\allegro5\system.h
+1761574273 d:\allegro\include\allegro5\system.h
 	"allegro5/config.h"
 	"allegro5/path.h"
 
-1732761303 d:\allegro\include\allegro5\threads.h
+1761574273 d:\allegro\include\allegro5\threads.h
 	"allegro5/altime.h"
 
-1732761303 d:\allegro\include\allegro5\timer.h
+1761574273 d:\allegro\include\allegro5\timer.h
 	"allegro5/base.h"
 	"allegro5/events.h"
 
-1732761303 d:\allegro\include\allegro5\tls.h
+1761574273 d:\allegro\include\allegro5\tls.h
 	"allegro5/base.h"
 
-1732761303 d:\allegro\include\allegro5\alcompat.h
+1761574244 d:\allegro\include\allegro5\alcompat.h
 
-1732761303 d:\allegro\include\allegro5\allegro_image.h
+1761574245 d:\allegro\include\allegro5\allegro_image.h
 	"allegro5/base.h"
 
-1732761303 d:\allegro\include\allegro5\allegro_font.h
+1761574245 d:\allegro\include\allegro5\allegro_font.h
 	"allegro5/allegro.h"
 
-1732761303 d:\allegro\include\allegro5\allegro_ttf.h
+1761574245 d:\allegro\include\allegro5\allegro_ttf.h
 	"allegro5/allegro.h"
 	"allegro5/allegro_font.h"
 
-1732761303 d:\allegro\include\allegro5\allegro_primitives.h
+1761574245 d:\allegro\include\allegro5\allegro_primitives.h
 	<allegro5/allegro.h>
 
-1761590840 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\engine.h
+1763421338 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\engine.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_image.h>
 	<allegro5/allegro_font.h>
@@ -315,54 +315,62 @@
 	<string>
 	<fstream>
 
-1761591031 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\main.cpp
+1763423812 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\main.cpp
 	"Engine.h"
 	"PrimitiveRenderer.h"
 	"Point2D.h"
 	"LineSegment.h"
+	"PointShape.h"
+	"LineShape.h"
+	"Player.h"
 	<allegro5/allegro.h>
 	<allegro5/allegro_primitives.h>
+	<allegro5/allegro_image.h>
 	<vector>
+	<memory>
+	<cmath>
+	<algorithm>
+	<string>
 
-1761590794 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\linesegment.cpp
+1763423131 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\linesegment.cpp
 	"LineSegment.h"
 	"PrimitiveRenderer.h"
 	<cmath>
 
-1761590959 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\linesegment.h
+1763423712 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\linesegment.h
 	"Point2D.h"
 
-1761590833 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\point2d.h
+1763424376 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\point2d.h
 
-1761591001 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\primitiverenderer.h
+1763424376 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\primitiverenderer.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_primitives.h>
 	<vector>
 	"Point2D.h"
 	"LineSegment.h"
 
-1761590959 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\linesegment.h
+1763423712 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\linesegment.h
 	"Point2D.h"
 
-1761590801 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\point2d.cpp
+1763424376 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\point2d.cpp
 	"Point2D.h"
 	"PrimitiveRenderer.h"
 
-1761590833 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\point2d.h
+1763424376 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\point2d.h
 
-1761590823 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\primitiverenderer.cpp
+1763424376 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\primitiverenderer.cpp
 	"PrimitiveRenderer.h"
 	<cmath>
 	<algorithm>
 
-1761591001 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\primitiverenderer.h
+1763424376 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\primitiverenderer.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_primitives.h>
 	<vector>
 	"Point2D.h"
 	"LineSegment.h"
 
-1763421338 source:c:\users\pc\desktop\silnik2d\engine.cpp
+1763422970 source:c:\users\pc\desktop\silnik2d\engine.cpp
 	"Engine.h"
 	<iostream>
 
@@ -384,47 +392,55 @@
 	<string>
 	<fstream>
 
-1763421338 source:c:\users\pc\desktop\silnik2d\linesegment.cpp
+1763423131 source:c:\users\pc\desktop\silnik2d\linesegment.cpp
 	"LineSegment.h"
 	"PrimitiveRenderer.h"
 	<cmath>
 
-1763421338 c:\users\pc\desktop\silnik2d\linesegment.h
+1763423712 c:\users\pc\desktop\silnik2d\linesegment.h
 	"Point2D.h"
 
-1763421338 c:\users\pc\desktop\silnik2d\point2d.h
+1763423712 c:\users\pc\desktop\silnik2d\point2d.h
 
-1763421338 c:\users\pc\desktop\silnik2d\primitiverenderer.h
+1763423712 c:\users\pc\desktop\silnik2d\primitiverenderer.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_primitives.h>
 	<vector>
 	"Point2D.h"
 	"LineSegment.h"
 
-1763421338 source:c:\users\pc\desktop\silnik2d\linesegment.h
+1763423712 source:c:\users\pc\desktop\silnik2d\linesegment.h
 	"Point2D.h"
 
-1761592350 source:c:\users\pc\desktop\silnik2d\main.cpp
+1763423812 source:c:\users\pc\desktop\silnik2d\main.cpp
 	"Engine.h"
 	"PrimitiveRenderer.h"
 	"Point2D.h"
 	"LineSegment.h"
+	"PointShape.h"
+	"LineShape.h"
+	"Player.h"
 	<allegro5/allegro.h>
 	<allegro5/allegro_primitives.h>
+	<allegro5/allegro_image.h>
 	<vector>
+	<memory>
+	<cmath>
+	<algorithm>
+	<string>
 
-1763421338 source:c:\users\pc\desktop\silnik2d\point2d.cpp
+1763423712 source:c:\users\pc\desktop\silnik2d\point2d.cpp
 	"Point2D.h"
 	"PrimitiveRenderer.h"
 
-1763421338 source:c:\users\pc\desktop\silnik2d\point2d.h
+1763423712 source:c:\users\pc\desktop\silnik2d\point2d.h
 
-1763421338 source:c:\users\pc\desktop\silnik2d\primitiverenderer.cpp
+1763423712 source:c:\users\pc\desktop\silnik2d\primitiverenderer.cpp
 	"PrimitiveRenderer.h"
 	<cmath>
 	<algorithm>
 
-1763421338 source:c:\users\pc\desktop\silnik2d\primitiverenderer.h
+1763423712 source:c:\users\pc\desktop\silnik2d\primitiverenderer.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_primitives.h>
 	<vector>
@@ -1489,4 +1505,408 @@
 	"Point2D.h"
 	"PrimitiveRenderer.h"
 	<allegro5/allegro.h>
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\allegro.h
+	"allegro5/base.h"
+	"allegro5/altime.h"
+	"allegro5/bitmap.h"
+	"allegro5/bitmap_draw.h"
+	"allegro5/bitmap_io.h"
+	"allegro5/bitmap_lock.h"
+	"allegro5/blender.h"
+	"allegro5/clipboard.h"
+	"allegro5/color.h"
+	"allegro5/config.h"
+	"allegro5/cpu.h"
+	"allegro5/debug.h"
+	"allegro5/display.h"
+	"allegro5/drawing.h"
+	"allegro5/error.h"
+	"allegro5/events.h"
+	"allegro5/file.h"
+	"allegro5/fixed.h"
+	"allegro5/fmaths.h"
+	"allegro5/fshook.h"
+	"allegro5/fullscreen_mode.h"
+	"allegro5/haptic.h"
+	"allegro5/joystick.h"
+	"allegro5/keyboard.h"
+	"allegro5/memory.h"
+	"allegro5/monitor.h"
+	"allegro5/mouse.h"
+	"allegro5/mouse_cursor.h"
+	"allegro5/path.h"
+	"allegro5/render_state.h"
+	"allegro5/shader.h"
+	"allegro5/system.h"
+	"allegro5/threads.h"
+	"allegro5/timer.h"
+	"allegro5/tls.h"
+	"allegro5/touch_input.h"
+	"allegro5/transformations.h"
+	"allegro5/utf8.h"
+	"allegro5/alcompat.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\base.h
+	<errno.h>
+	<limits.h>
+	<limits.h>
+	<stdarg.h>
+	<stddef.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<sys/types.h>
+	<fortify/fortify.h>
+	<dmalloc.h>
+	"allegro5/internal/alconfig.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\internal\alconfig.h
+	"allegro5/platform/alplatf.h"
+	"allegro5/platform/alwatcom.h"
+	"allegro5/platform/almngw32.h"
+	"allegro5/platform/albcc32.h"
+	"allegro5/platform/almsvc.h"
+	"allegro5/platform/aliphonecfg.h"
+	"allegro5/platform/alosxcfg.h"
+	"allegro5/platform/alandroidcfg.h"
+	"allegro5/platform/alraspberrypicfg.h"
+	"allegro5/platform/alucfg.h"
+	"allegro5/platform/allegro_sdl_config.h"
+	"allegro5/platform/astdint.h"
+	"allegro5/platform/astdbool.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\platform\alplatf.h
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\platform\alwatcom.h
+	<io.h>
+	<i86.h>
+	<conio.h>
+	<fcntl.h>
+	<direct.h>
+	<malloc.h>
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\platform\almngw32.h
+	<io.h>
+	<fcntl.h>
+	<direct.h>
+	<malloc.h>
+	"allegro5/platform/alplatf.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\platform\albcc32.h
+	<io.h>
+	<fcntl.h>
+	<direct.h>
+	<malloc.h>
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\platform\almsvc.h
+	<io.h>
+	<fcntl.h>
+	<direct.h>
+	<malloc.h>
+	"allegro5/platform/alplatf.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\platform\aliphonecfg.h
+	<fcntl.h>
+	<unistd.h>
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\platform\alosxcfg.h
+	"allegro5/platform/alplatf.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\platform\alandroidcfg.h
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\platform\alraspberrypicfg.h
+	<fcntl.h>
+	<unistd.h>
+	<sys/types.h>
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\platform\alucfg.h
+	<fcntl.h>
+	<unistd.h>
+	"alunix.h"
+	"allegro5/platform/alplatf.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\platform\alunix.h
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\platform\allegro_sdl_config.h
+	<fcntl.h>
+	<unistd.h>
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\platform\astdint.h
+	<inttypes.h>
+	<stdint.h>
+	<limits.h>
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\platform\astdbool.h
+	<stdbool.h>
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\altime.h
+	"allegro5/base.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\bitmap.h
+	"allegro5/color.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\color.h
+	"allegro5/base.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\bitmap_draw.h
+	"allegro5/bitmap.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\bitmap_io.h
+	"allegro5/bitmap.h"
+	"allegro5/file.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\file.h
+	"allegro5/base.h"
+	"allegro5/path.h"
+	"allegro5/utf8.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\path.h
+	"allegro5/base.h"
+	"allegro5/utf8.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\utf8.h
+	"allegro5/base.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\bitmap_lock.h
+	"allegro5/bitmap.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\blender.h
+	"allegro5/base.h"
+	"allegro5/color.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\clipboard.h
+	"allegro5/base.h"
+	"allegro5/display.h"
+	"allegro5/utf8.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\display.h
+	"allegro5/bitmap.h"
+	"allegro5/color.h"
+	"allegro5/events.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\events.h
+	"allegro5/altime.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\config.h
+	"allegro5/file.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\cpu.h
+	"allegro5/base.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\debug.h
+	<assert.h>
+	"allegro5/base.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\drawing.h
+	"allegro5/color.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\error.h
+	"allegro5/base.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\fixed.h
+	"allegro5/base.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\fmaths.h
+	"allegro5/base.h"
+	"allegro5/fixed.h"
+	"allegro5/inline/fmaths.inl"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\inline\fmaths.inl
+	"allegro5/error.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\fshook.h
+	"allegro5/base.h"
+	"allegro5/file.h"
+	"allegro5/path.h"
+	<sys/types.h>
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\fullscreen_mode.h
+	"allegro5/base.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\haptic.h
+	"allegro5/base.h"
+	"allegro5/display.h"
+	"allegro5/events.h"
+	"allegro5/joystick.h"
+	"allegro5/keyboard.h"
+	"allegro5/mouse.h"
+	"allegro5/touch_input.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\joystick.h
+	"allegro5/base.h"
+	"allegro5/events.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\keyboard.h
+	"allegro5/base.h"
+	"allegro5/events.h"
+	"allegro5/keycodes.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\keycodes.h
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\mouse.h
+	"allegro5/base.h"
+	"allegro5/events.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\touch_input.h
+	"allegro5/base.h"
+	"allegro5/events.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\memory.h
+	"allegro5/base.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\monitor.h
+	"allegro5/base.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\mouse_cursor.h
+	"allegro5/base.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\render_state.h
+	"allegro5/base.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\shader.h
+	"allegro5/base.h"
+	"allegro5/transformations.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\transformations.h
+	"allegro5/display.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\system.h
+	"allegro5/config.h"
+	"allegro5/path.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\threads.h
+	"allegro5/altime.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\timer.h
+	"allegro5/base.h"
+	"allegro5/events.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\tls.h
+	"allegro5/base.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\alcompat.h
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\allegro_image.h
+	"allegro5/base.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\allegro_font.h
+	"allegro5/allegro.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\allegro_ttf.h
+	"allegro5/allegro.h"
+	"allegro5/allegro_font.h"
+
+1763421745 c:\users\pc\desktop\silnik2d\allegro\include\allegro5\allegro_primitives.h
+	<allegro5/allegro.h>
+
+1763423712 c:\users\pc\desktop\silnik2d\player.h
+	"UpdatableObject.h"
+	"DrawableObject.h"
+	"TransformableObject.h"
+	"PrimitiveRenderer.h"
+	<allegro5/allegro.h>
+
+1763423712 source:c:\users\pc\desktop\silnik2d\player.cpp
+	"Player.h"
+	"PrimitiveRenderer.h"
+	<allegro5/allegro_primitives.h>
+	<iostream>
+	<cmath>
+
+1763423712 source:c:\users\pc\desktop\silnik2d\lineshape.cpp
+	"LineShape.h"
+	"PrimitiveRenderer.h"
+
+1763423793 c:\users\pc\desktop\silnik2d\lineshape.h
+	"ShapeObject.h"
+	"LineSegment.h"
+	<cmath>
+
+1763423712 c:\users\pc\desktop\silnik2d\shapeobject.h
+	"DrawableObject.h"
+	"TransformableObject.h"
+
+1763424336 c:\users\pc\desktop\silnik2d\drawableobject.h
+	"GameObject.h"
+
+1763423032 c:\users\pc\desktop\silnik2d\gameobject.h
+
+1763423712 c:\users\pc\desktop\silnik2d\transformableobject.h
+	"GameObject.h"
+
+1763423712 c:\users\pc\desktop\silnik2d\updatableobject.h
+	"GameObject.h"
+
+1763423712 source:c:\users\pc\desktop\silnik2d\pointshape.cpp
+	"PointShape.h"
+	"PrimitiveRenderer.h"
+	<allegro5/allegro_primitives.h>
+
+1763423712 c:\users\pc\desktop\silnik2d\pointshape.h
+	"ShapeObject.h"
+	"Point2D.h"
+	<cmath>
+
+1763423712 source:c:\users\pc\desktop\silnik2d\player.h
+	"UpdatableObject.h"
+	"DrawableObject.h"
+	"TransformableObject.h"
+	"PrimitiveRenderer.h"
+	<allegro5/allegro.h>
+
+1763424376 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\lineshape.cpp
+	"LineShape.h"
+	"PrimitiveRenderer.h"
+
+1763424376 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\lineshape.h
+	"ShapeObject.h"
+	"LineSegment.h"
+	<cmath>
+
+1763424376 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\shapeobject.h
+	"DrawableObject.h"
+	"TransformableObject.h"
+
+1763424376 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\drawableobject.h
+	"GameObject.h"
+
+1763424376 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\gameobject.h
+
+1763424376 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\transformableobject.h
+	"GameObject.h"
+
+1763424376 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\pointshape.h
+	"ShapeObject.h"
+	"Point2D.h"
+	<cmath>
+
+1763424376 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\player.h
+	"UpdatableObject.h"
+	"DrawableObject.h"
+	"TransformableObject.h"
+	"PrimitiveRenderer.h"
+	<allegro5/allegro.h>
+
+1763424376 d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\updatableobject.h
+	"GameObject.h"
+
+1763424376 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\player.cpp
+	"Player.h"
+	"PrimitiveRenderer.h"
+	<allegro5/allegro_primitives.h>
+	<iostream>
+	<cmath>
+
+1763424376 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\player.h
+	"UpdatableObject.h"
+	"DrawableObject.h"
+	"TransformableObject.h"
+	"PrimitiveRenderer.h"
+	<allegro5/allegro.h>
+
+1763424376 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\pointshape.cpp
+	"PointShape.h"
+	"PrimitiveRenderer.h"
+	<allegro5/allegro_primitives.h>
 

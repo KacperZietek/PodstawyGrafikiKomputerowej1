@@ -14,20 +14,20 @@
 				<Option projectLinkerOptionsRelation="1" />
 				<Compiler>
 					<Add option="-g" />
-					<Add directory="allegro/include" />
+					<Add directory="D:/allegro/include" />
 				</Compiler>
 				<Linker>
-					<Add library="allegro/lib/liballegro_acodec.dll.a" />
-					<Add library="allegro/lib/liballegro.dll.a" />
-					<Add library="allegro/lib/liballegro_audio.dll.a" />
-					<Add library="allegro/lib/liballegro_dialog.dll.a" />
-					<Add library="allegro/lib/liballegro_font.dll.a" />
-					<Add library="allegro/lib/liballegro_image.dll.a" />
-					<Add library="allegro/lib/liballegro_main.dll.a" />
-					<Add library="allegro/lib/liballegro_primitives.dll.a" />
-					<Add library="allegro/lib/liballegro_ttf.dll.a" />
-					<Add library="allegro/lib/liballegro_color.dll.a" />
-					<Add directory="allegro/lib" />
+					<Add library="D:/allegro/lib/liballegro.dll.a" />
+					<Add library="D:/allegro/lib/liballegro_acodec.dll.a" />
+					<Add library="D:/allegro/lib/liballegro_audio.dll.a" />
+					<Add library="D:/allegro/lib/liballegro_color.dll.a" />
+					<Add library="D:/allegro/lib/liballegro_dialog.dll.a" />
+					<Add library="D:/allegro/lib/liballegro_font.dll.a" />
+					<Add library="D:/allegro/lib/liballegro_image.dll.a" />
+					<Add library="D:/allegro/lib/liballegro_main.dll.a" />
+					<Add library="D:/allegro/lib/liballegro_primitives.dll.a" />
+					<Add library="D:/allegro/lib/liballegro_ttf.dll.a" />
+					<Add directory="D:/allegro/lib" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -61,19 +61,51 @@
 			<Add library="../../../allegro/lib/liballegro.dll.a" />
 			<Add directory="../../../allegro/lib" />
 		</Linker>
+		<Unit filename="DrawableObject.h">
+			<Option compile="1" />
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="GameObject.h">
+			<Option compile="1" />
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="LineSegment.cpp" />
 		<Unit filename="LineSegment.h">
 			<Option compile="1" />
 		</Unit>
+		<Unit filename="LineShape.cpp" />
+		<Unit filename="LineShape.h">
+			<Option compile="1" />
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="Player.cpp" />
-		<Unit filename="Player.h" />
+		<Unit filename="Player.h">
+			<Option compile="1" />
+		</Unit>
 		<Unit filename="Point2D.cpp" />
 		<Unit filename="Point2D.h">
 			<Option compile="1" />
 		</Unit>
+		<Unit filename="PointShape.cpp" />
+		<Unit filename="PointShape.h">
+			<Option compile="1" />
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="PrimitiveRenderer.cpp" />
 		<Unit filename="PrimitiveRenderer.h">
 			<Option compile="1" />
+		</Unit>
+		<Unit filename="ShapeObject.h">
+			<Option compile="1" />
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="TransformableObject.h">
+			<Option compile="1" />
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="UpdatableObject.h">
+			<Option compile="1" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine.cpp" />
 		<Unit filename="engine.h">
