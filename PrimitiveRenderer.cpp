@@ -46,7 +46,7 @@ void PrimitiveRenderer::drawLineIncremental(float x1, float y1, float x2, float 
     float dx = x2 - x1;
     float dy = y2 - y1;
 
-    // Obliczamy liczbe krok�w
+    // Obliczamy liczbe kroków
     int steps = std::max(std::abs(dx), std::abs(dy));
 
     if (steps == 0) {
@@ -116,5 +116,118 @@ void PrimitiveRenderer::drawTriangle(float x1, float y1, float x2, float y2, flo
         al_draw_filled_triangle(x1, y1, x2, y2, x3, y3, current_color);
     } else {
         al_draw_triangle(x1, y1, x2, y2, x3, y3, current_color, 1.0f);
+    }
+}
+
+// Rysuje 8 punktów wykorzystując symetrię okręgu
+void PrimitiveRenderer::drawCirclePoints(float cx, float cy, float x, float y, bool filled) {
+    if (filled) {
+        // Dla wypełnionego okręgu - rysujemy poziome linie
+        al_draw_line(cx - x, cy + y, cx + x, cy + y, current_color, 1.0f);
+        al_draw_line(cx - x, cy - y, cx + x, cy - y, current_color, 1.0f);
+        al_draw_line(cx - y, cy + x, cx + y, cy + x, current_color, 1.0f);
+        al_draw_line(cx - y, cy - x, cx + y, cy - x, current_color, 1.0f);
+    } else {
+        // Dla obramowanego okręgu - rysujemy 8 punktów
+        drawPoint(cx + x, cy + y);
+        drawPoint(cx - x, cy + y);
+        drawPoint(cx + x, cy - y);
+        drawPoint(cx - x, cy - y);
+        drawPoint(cx + y, cy + x);
+        drawPoint(cx - y, cy + x);
+        drawPoint(cx + y, cy - x);
+        drawPoint(cx - y, cy - x);
+    }
+}
+
+// Algorytm Bresenhama dla okręgu
+void PrimitiveRenderer::drawCircleBresenham(float cx, float cy, float radius, bool filled) {
+    if (radius <= 0) return;
+
+    int x = 0;
+    int y = static_cast<int>(radius);
+    int d = 3 - 2 * static_cast<int>(radius);
+
+    drawCirclePoints(cx, cy, x, y, filled);
+
+    while (y >= x) {
+        x++;
+
+        if (d > 0) {
+            y--;
+            d = d + 4 * (x - y) + 10;
+        } else {
+            d = d + 4 * x + 6;
+        }
+
+        drawCirclePoints(cx, cy, x, y, filled);
+    }
+}
+
+// Rysuje 4 punkty wykorzystując symetrię elipsy
+void PrimitiveRenderer::drawEllipsePoints(float cx, float cy, float x, float y) {
+    drawPoint(cx + x, cy + y);
+    drawPoint(cx - x, cy + y);
+    drawPoint(cx + x, cy - y);
+    drawPoint(cx - x, cy - y);
+}
+
+// Algorytm midpoint dla elipsy
+void PrimitiveRenderer::drawEllipseMidpoint(float cx, float cy, float rx, float ry, bool filled) {
+    if (rx <= 0 || ry <= 0) return;
+
+    float rx2 = rx * rx;
+    float ry2 = ry * ry;
+    float twoRx2 = 2 * rx2;
+    float twoRy2 = 2 * ry2;
+
+    float x = 0;
+    float y = ry;
+    float px = 0;
+    float py = twoRx2 * y;
+
+    // Region 1
+    float p = ry2 - (rx2 * ry) + (0.25f * rx2);
+    while (px < py) {
+        x++;
+        px += twoRy2;
+
+        if (p < 0) {
+            p += ry2 + px;
+        } else {
+            y--;
+            py -= twoRx2;
+            p += ry2 + px - py;
+        }
+
+        if (filled) {
+            // Dla wypełnionej elipsy - rysujemy poziome linie
+            al_draw_line(cx - x, cy + y, cx + x, cy + y, current_color, 1.0f);
+            al_draw_line(cx - x, cy - y, cx + x, cy - y, current_color, 1.0f);
+        } else {
+            drawEllipsePoints(cx, cy, x, y);
+        }
+    }
+
+    // Region 2
+    p = ry2 * (x + 0.5f) * (x + 0.5f) + rx2 * (y - 1) * (y - 1) - rx2 * ry2;
+    while (y > 0) {
+        y--;
+        py -= twoRx2;
+
+        if (p > 0) {
+            p += rx2 - py;
+        } else {
+            x++;
+            px += twoRy2;
+            p += rx2 - py + px;
+        }
+
+        if (filled) {
+            al_draw_line(cx - x, cy + y, cx + x, cy + y, current_color, 1.0f);
+            al_draw_line(cx - x, cy - y, cx + x, cy - y, current_color, 1.0f);
+        } else {
+            drawEllipsePoints(cx, cy, x, y);
+        }
     }
 }

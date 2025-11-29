@@ -9,10 +9,21 @@
 #include <string>
 #include <fstream>
 
+// DODAJ TE INCLUDE
+#include "PrimitiveRenderer.h"
+#include "Point2D.h"
+#include "LineSegment.h"
+#include "PointShape.h"
+#include "LineShape.h"
+#include "Player.h"
+#include "ShapeObject.h"
+
 enum DisplayMode {
     WINDOWED,
     FULLSCREEN
 };
+
+class ComprehensiveDemo; // Forward declaration
 
 class Engine {
 private:
@@ -75,6 +86,9 @@ public:
     virtual void on_key_release(int key) {}
     virtual void on_mouse_click(int button, int x, int y) {}
     virtual void on_mouse_move(int x, int y) {}
+
+    // DODANA METODA dla przekazywania zdarzeñ
+    virtual void forwardEventToPlayer(const ALLEGRO_EVENT& ev) {}
 };
 
 #endif

@@ -42,6 +42,15 @@ public:
     void drawRectangle(float x1, float y1, float x2, float y2, bool filled = false);
     void drawCircle(float cx, float cy, float radius, bool filled = false);
     void drawTriangle(float x1, float y1, float x2, float y2, float x3, float y3, bool filled = false);
+
+    // NOWE METODY - w³asne algorytmy
+    void drawCircleBresenham(float cx, float cy, float radius, bool filled = false);
+    void drawEllipseMidpoint(float cx, float cy, float rx, float ry, bool filled = false);
+
+private:
+    // Pomocnicze metody dla algorytmów
+    void drawCirclePoints(float cx, float cy, float x, float y, bool filled);
+    void drawEllipsePoints(float cx, float cy, float x, float y);
 };
 
 #endif

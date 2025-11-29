@@ -105,7 +105,7 @@ bool Engine::initialize_graphics() {
             log_message("Warning: Could not get monitor info, using default resolution");
         }
     } else {
-        // Tryb okienkowy - użyj domyślnej rozdzielczości
+        // Tryb okienkowy
         flags |= ALLEGRO_WINDOWED;
     }
 
@@ -165,6 +165,9 @@ void Engine::run() {
         current_time = al_get_time();
         delta_time = current_time - last_time;
         last_time = current_time;
+
+        // DODANE: Przekaż zdarzenie do wirtualnej metody
+        forwardEventToPlayer(event);
 
         switch (event.type) {
             case ALLEGRO_EVENT_DISPLAY_CLOSE:

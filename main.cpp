@@ -14,6 +14,86 @@
 #include <algorithm>
 #include <string>
 
+// Klasa bazowa dla narysowanych kształtów
+class DrawnShape {
+public:
+    virtual ~DrawnShape() = default;
+    virtual void draw(PrimitiveRenderer* renderer, bool use_custom_circle, bool use_custom_ellipse, bool filled) const = 0;
+};
+
+// Klasa dla narysowanego okręgu
+class DrawnCircle : public DrawnShape {
+private:
+    float center_x, center_y, radius;
+    ALLEGRO_COLOR color;
+public:
+    DrawnCircle(float cx, float cy, float r, ALLEGRO_COLOR col)
+        : center_x(cx), center_y(cy), radius(r), color(col) {}
+
+    void draw(PrimitiveRenderer* renderer, bool use_custom_circle, bool use_custom_ellipse, bool filled) const override {
+        renderer->setColor(color);
+        if (use_custom_circle) {
+            renderer->drawCircleBresenham(center_x, center_y, radius, filled);
+        } else {
+            renderer->drawCircle(center_x, center_y, radius, filled);
+        }
+    }
+};
+
+// Klasa dla narysowanej elipsy
+class DrawnEllipse : public DrawnShape {
+private:
+    float center_x, center_y, rx, ry;
+    ALLEGRO_COLOR color;
+public:
+    DrawnEllipse(float cx, float cy, float radius_x, float radius_y, ALLEGRO_COLOR col)
+        : center_x(cx), center_y(cy), rx(radius_x), ry(radius_y), color(col) {}
+
+    void draw(PrimitiveRenderer* renderer, bool use_custom_circle, bool use_custom_ellipse, bool filled) const override {
+        renderer->setColor(color);
+        if (use_custom_ellipse) {
+            renderer->drawEllipseMidpoint(center_x, center_y, rx, ry, filled);
+        } else {
+            if (filled) {
+                al_draw_filled_ellipse(center_x, center_y, rx, ry, color);
+            } else {
+                al_draw_ellipse(center_x, center_y, rx, ry, color, 2.0f);
+            }
+        }
+    }
+};
+
+// Klasa dla narysowanego prostokąta
+class DrawnRectangle : public DrawnShape {
+private:
+    float x1, y1, x2, y2;
+    ALLEGRO_COLOR color;
+public:
+    DrawnRectangle(float x_start, float y_start, float x_end, float y_end, ALLEGRO_COLOR col)
+        : x1(std::min(x_start, x_end)), y1(std::min(y_start, y_end)),
+          x2(std::max(x_start, x_end)), y2(std::max(y_start, y_end)), color(col) {}
+
+    void draw(PrimitiveRenderer* renderer, bool use_custom_circle, bool use_custom_ellipse, bool filled) const override {
+        renderer->setColor(color);
+        renderer->drawRectangle(x1, y1, x2, y2, filled);
+    }
+};
+
+// Klasa dla narysowanego trójkąta
+class DrawnTriangle : public DrawnShape {
+private:
+    float x1, y1, x2, y2, x3, y3;
+    ALLEGRO_COLOR color;
+public:
+    DrawnTriangle(float x1_, float y1_, float x2_, float y2_, float x3_, float y3_, ALLEGRO_COLOR col)
+        : x1(x1_), y1(y1_), x2(x2_), y2(y2_), x3(x3_), y3(y3_), color(col) {}
+
+    void draw(PrimitiveRenderer* renderer, bool use_custom_circle, bool use_custom_ellipse, bool filled) const override {
+        renderer->setColor(color);
+        renderer->drawTriangle(x1, y1, x2, y2, x3, y3, filled);
+    }
+};
+
 class ComprehensiveDemo : public Engine {
 private:
     PrimitiveRenderer renderer;
@@ -24,6 +104,9 @@ private:
 
     // Shape objects do transformacji
     std::vector<std::shared_ptr<ShapeObject>> shapes;
+
+    // NOWE: Lista narysowanych kształtów
+    std::vector<std::shared_ptr<DrawnShape>> drawn_shapes;
 
     // Player
     Player player;
@@ -41,6 +124,26 @@ private:
     bool animate_shapes;
     bool animate_sprite;
     bool fill_primitives;
+
+    // NOWE POLA do testowania algorytmów
+    bool use_custom_circle_algorithm;
+    bool use_custom_ellipse_algorithm;
+    bool show_custom_primitives;
+
+    // NOWE POLA do rysowania kształtów
+    enum DrawingMode {
+        DRAW_NONE,
+        DRAW_CIRCLE,
+        DRAW_ELLIPSE,
+        DRAW_RECTANGLE,
+        DRAW_TRIANGLE  // NOWE
+    };
+
+    DrawingMode current_drawing_mode;
+    bool drawing_active;
+    Point2D drawing_start_point;
+    Point2D drawing_current_point;
+    ALLEGRO_COLOR drawing_color;
 
     // Transformacje
     float rotation_angle;
@@ -73,6 +176,15 @@ public:
           animate_shapes(false),
           animate_sprite(false),
           fill_primitives(false),
+          // NOWE INICJALIZACJE
+          use_custom_circle_algorithm(false),
+          use_custom_ellipse_algorithm(false),
+          show_custom_primitives(true),
+          current_drawing_mode(DRAW_NONE),
+          drawing_active(false),
+          drawing_start_point(0, 0),
+          drawing_current_point(0, 0),
+          drawing_color(al_map_rgb(255, 255, 0)), // Żółty kolor
           rotation_angle(0.0f),
           scale_factor(1.0f),
           translation_offset(0.0f),
@@ -100,8 +212,163 @@ public:
         }
     }
 
+    // DODANA METODA: przekazuje zdarzenia do gracza (OVERRIDE)
+    virtual void forwardEventToPlayer(const ALLEGRO_EVENT& ev) override {
+        if (show_player) {
+            player.handleEvent(ev);
+        }
+    }
+
+    // NOWE METODY do rysowania kształtów
+    void startDrawing(DrawingMode mode, int start_x, int start_y) {
+        current_drawing_mode = mode;
+        drawing_active = true;
+        drawing_start_point.setPosition(start_x, start_y);
+        drawing_current_point.setPosition(start_x, start_y);
+    }
+
+    void updateDrawing(int current_x, int current_y) {
+        if (drawing_active) {
+            drawing_current_point.setPosition(current_x, current_y);
+        }
+    }
+
+    void finishDrawing() {
+    if (drawing_active) {
+        // Zapisz kształt do listy
+        float x1 = drawing_start_point.getX();
+        float y1 = drawing_start_point.getY();
+        float x2 = drawing_current_point.getX();
+        float y2 = drawing_current_point.getY();
+
+        switch (current_drawing_mode) {
+            case DRAW_CIRCLE: {
+                float center_x = (x1 + x2) / 2;
+                float center_y = (y1 + y2) / 2;
+                float radius = std::sqrt(std::pow(x2 - x1, 2) + std::pow(y2 - y1, 2)) / 2;
+                drawn_shapes.push_back(std::make_shared<DrawnCircle>(center_x, center_y, radius, drawing_color));
+                break;
+            }
+
+            case DRAW_ELLIPSE: {
+                float center_x = (x1 + x2) / 2;
+                float center_y = (y1 + y2) / 2;
+                float rx = std::abs(x2 - x1) / 2;
+                float ry = std::abs(y2 - y1) / 2;
+                drawn_shapes.push_back(std::make_shared<DrawnEllipse>(center_x, center_y, rx, ry, drawing_color));
+                break;
+            }
+
+            case DRAW_RECTANGLE: {
+                drawn_shapes.push_back(std::make_shared<DrawnRectangle>(x1, y1, x2, y2, drawing_color));
+                break;
+            }
+
+            case DRAW_TRIANGLE: {  // NOWE
+                // Trójkąt: punkt startowy + punkt przeciągnięcia + trzeci punkt obliczony
+                float x3 = x1 + (x2 - x1) * 0.5f;
+                float y3 = y1 - std::abs(y2 - y1) * 0.8f; // Trzeci punkt nad podstawą
+                drawn_shapes.push_back(std::make_shared<DrawnTriangle>(x1, y2, x2, y2, x3, y3, drawing_color)); // POPRAWIONE: użyj y3
+                break;
+            }
+
+            case DRAW_NONE:
+                break;
+        }
+
+        drawing_active = false;
+        current_drawing_mode = DRAW_NONE;
+    }
+}
+
+    void drawCurrentShape(PrimitiveRenderer* renderer) {
+    if (!drawing_active || !renderer) return;
+
+    float x1 = drawing_start_point.getX();
+    float y1 = drawing_start_point.getY();
+    float x2 = drawing_current_point.getX();
+    float y2 = drawing_current_point.getY();
+
+    renderer->setColor(drawing_color);
+
+    switch (current_drawing_mode) {
+        case DRAW_CIRCLE: {
+            float center_x = (x1 + x2) / 2;
+            float center_y = (y1 + y2) / 2;
+            float radius = std::sqrt(std::pow(x2 - x1, 2) + std::pow(y2 - y1, 2)) / 2;
+
+            if (use_custom_circle_algorithm) {
+                renderer->drawCircleBresenham(center_x, center_y, radius, fill_primitives);
+            } else {
+                renderer->drawCircle(center_x, center_y, radius, fill_primitives);
+            }
+            break;
+        }
+
+        case DRAW_ELLIPSE: {
+            float center_x = (x1 + x2) / 2;
+            float center_y = (y1 + y2) / 2;
+            float rx = std::abs(x2 - x1) / 2;
+            float ry = std::abs(y2 - y1) / 2;
+
+            if (use_custom_ellipse_algorithm) {
+                renderer->drawEllipseMidpoint(center_x, center_y, rx, ry, fill_primitives);
+            } else {
+                if (fill_primitives) {
+                    al_draw_filled_ellipse(center_x, center_y, rx, ry, drawing_color);
+                } else {
+                    al_draw_ellipse(center_x, center_y, rx, ry, drawing_color, 2.0f);
+                }
+            }
+            break;
+        }
+
+        case DRAW_RECTANGLE: {
+            if (fill_primitives) {
+                renderer->drawRectangle(
+                    std::min(x1, x2), std::min(y1, y2),
+                    std::max(x1, x2), std::max(y1, y2),
+                    true
+                );
+            } else {
+                renderer->drawRectangle(
+                    std::min(x1, x2), std::min(y1, y2),
+                    std::max(x1, x2), std::max(y1, y2),
+                    false
+                );
+            }
+            break;
+        }
+
+        case DRAW_TRIANGLE: {  // NOWE
+            // Trójkąt: punkt startowy + punkt przeciągnięcia + trzeci punkt obliczony
+            float x3 = x1 + (x2 - x1) * 0.5f;
+            float y3 = y1 - std::abs(y2 - y1) * 0.8f; // Trzeci punkt nad podstawą
+
+            if (fill_primitives) {
+                renderer->drawTriangle(x1, y2, x2, y2, x3, y3, true); // POPRAWIONE: użyj y3
+            } else {
+                renderer->drawTriangle(x1, y2, x2, y2, x3, y3, false); // POPRAWIONE: użyj y3
+            }
+            break;
+        }
+
+        case DRAW_NONE:
+            break;
+    }
+}
+
+    void drawSavedShapes(PrimitiveRenderer* renderer) {
+        for (const auto& shape : drawn_shapes) {
+            shape->draw(renderer, use_custom_circle_algorithm, use_custom_ellipse_algorithm, fill_primitives);
+        }
+    }
+
     virtual void update(float delta_time) override {
         accumulated_time += delta_time;
+
+        // NOWE: Aktualizuj rozdzielczość gracza
+        player.setScreenSize(get_screen_width(), get_screen_height());
 
         // Liczenie FPS
         fps_time_accumulator += delta_time;
@@ -153,6 +420,9 @@ public:
         // Czyszczenie ekranu - STAŁE TŁO (czarne)
         clear_screen(al_map_rgb(0, 0, 0));
 
+        // === RYSOWANIE ZAPISANYCH KSZTAŁTÓW ===
+        drawSavedShapes(&renderer);
+
         // === RYSOWANIE PUNKTOW Z ANIMACJA ===
         renderer.setColor(255, 255, 0);
         for (size_t i = 0; i < points.size(); ++i) {
@@ -200,6 +470,32 @@ public:
         // Trojkaty - wypelnione i niewypelnione
         renderer.drawTriangle(500, 50, 550, 100, 450, 100, fill_primitives);
         renderer.drawTriangle(600, 50, 650, 100, 550, 100, !fill_primitives);
+
+        // === RYSOWANIE AKTUALNEGO KSZTAŁTU (PODGLĄD) ===
+        drawCurrentShape(&renderer);
+
+        // === TEST NOWYCH ALGORYTMÓW ===
+        if (show_custom_primitives) {
+            renderer.setColor(255, 0, 255); // Magenta dla własnych algorytmów
+
+            // Okrąg - własny vs biblioteczny algorytm
+            if (use_custom_circle_algorithm) {
+                renderer.drawCircleBresenham(200, 600, 30, fill_primitives);
+            } else {
+                renderer.drawCircle(200, 600, 30, fill_primitives);
+            }
+
+            // Elipsa - własny vs biblioteczny algorytm
+            if (use_custom_ellipse_algorithm) {
+                renderer.drawEllipseMidpoint(300, 600, 40, 25, fill_primitives);
+            } else {
+                if (fill_primitives) {
+                    al_draw_filled_ellipse(300, 600, 40, 25, al_map_rgb(255, 0, 255));
+                } else {
+                    al_draw_ellipse(300, 600, 40, 25, al_map_rgb(255, 0, 255), 2.0f);
+                }
+            }
+        }
 
         // === RYSOWANIE BITMAP ===
         if (show_bitmaps) {
@@ -269,6 +565,44 @@ public:
                         sprite_text.c_str());
             y_offset += 30;
 
+            // NOWE: Informacje o algorytmach okręgu i elipsy
+            std::string circle_algo = use_custom_circle_algorithm ?
+                "Okrag: BRESENHAM" : "Okrag: BIBLIOTEKA";
+            al_draw_text(get_font(), al_map_rgb(255, 200, 100), 10, y_offset, 0,
+                        circle_algo.c_str());
+            y_offset += 20;
+
+            std::string ellipse_algo = use_custom_ellipse_algorithm ?
+                "Elipsa: MIDPOINT" : "Elipsa: BIBLIOTEKA";
+            al_draw_text(get_font(), al_map_rgb(255, 200, 100), 10, y_offset, 0,
+                        ellipse_algo.c_str());
+            y_offset += 20;
+
+            std::string custom_primitives_text = show_custom_primitives ?
+                "Wlasne algorytmy: WLACZONE" : "Wlasne algorytmy: WYLACZONA";
+            al_draw_text(get_font(), al_map_rgb(255, 200, 100), 10, y_offset, 0,
+                        custom_primitives_text.c_str());
+            y_offset += 20;
+
+            // NOWE: Informacje o trybie rysowania
+            std::string drawing_mode_text;
+            switch (current_drawing_mode) {
+                case DRAW_NONE: drawing_mode_text = "Rysowanie: BRAK"; break;
+                case DRAW_CIRCLE: drawing_mode_text = "Rysowanie: OKRAG (1)"; break;
+                case DRAW_ELLIPSE: drawing_mode_text = "Rysowanie: ELIPSA (2)"; break;
+                case DRAW_RECTANGLE: drawing_mode_text = "Rysowanie: PROSTOKAT (3)"; break;
+                case DRAW_TRIANGLE: drawing_mode_text = "Rysowanie: TROJKAT (4)"; break;  // NOWE
+            }
+            al_draw_text(get_font(), al_map_rgb(200, 255, 200), 10, y_offset, 0,
+                        drawing_mode_text.c_str());
+            y_offset += 20;
+
+            std::string drawing_status = drawing_active ?
+                "Status: RYSOWANIE AKTYWNE" : "Status: OCZEKIWANIE";
+            al_draw_text(get_font(), al_map_rgb(200, 255, 200), 10, y_offset, 0,
+                        drawing_status.c_str());
+            y_offset += 30;
+
             // Informacja o trybie wyswietlania
             std::string display_text = (get_display_mode() == FULLSCREEN) ?
                 "Tryb: PELNY EKRAN (F11)" : "Tryb: OKNO (F11)";
@@ -293,18 +627,29 @@ public:
                         "B - Bitmapy | C - Czysc | R - Reset | ESC - Wyjscie");
             y_offset += 20;
 
+            // NOWE: Sterowanie algorytmami
             al_draw_text(get_font(), al_map_rgb(200, 200, 200), 10, y_offset, 0,
-                        "WASD - Ruch | Strzalki - Rotacja");
+                        "O - Algorytm okregu | E - Algorytm elipsy | U - Wl/wyl wlasne");
+            y_offset += 20;
+
+            // NOWE: Sterowanie rysowaniem
+            al_draw_text(get_font(), al_map_rgb(200, 200, 200), 10, y_offset, 0,
+                        "1 - Okrag | 2 - Elipsa | 3 - Prostokat | 4 - Trojkat");  // NOWE
             y_offset += 20;
 
             al_draw_text(get_font(), al_map_rgb(200, 200, 200), 10, y_offset, 0,
-                        "LPM - Dodaj punkt | PPM - Czysc punkty");
+                        "LPM - Rozpocznij rysowanie | PPM - Anuluj | SPM - Zakoncz");
+            y_offset += 20;
+
+            al_draw_text(get_font(), al_map_rgb(200, 200, 200), 10, y_offset, 0,
+                        "WASD - Ruch | Strzalki - Rotacja");
             y_offset += 30;
 
             // Statystyki
             std::string stats = "Punkty: " + std::to_string(points.size()) +
                                " | Odcinki: " + std::to_string(segments.size()) +
                                " | Ksztalty: " + std::to_string(shapes.size()) +
+                               " | Narysowane: " + std::to_string(drawn_shapes.size()) +
                                " | FPS: " + std::to_string(current_fps) +
                                " | Rozdzielczosc: " + std::to_string(get_screen_width()) +
                                "x" + std::to_string(get_screen_height());
@@ -317,7 +662,7 @@ public:
         if (key == ALLEGRO_KEY_ESCAPE) {
             stop();
         }
-        else if (key == ALLEGRO_KEY_F11) { // DODANE: Przełączanie fullscreen
+        else if (key == ALLEGRO_KEY_F11) {
             toggle_fullscreen();
         }
         else if (key == ALLEGRO_KEY_SPACE) {
@@ -345,28 +690,55 @@ public:
         else if (key == ALLEGRO_KEY_C) {
             points.clear();
             segments.clear();
+            drawn_shapes.clear(); // NOWE: wyczyść też narysowane kształty
             // Zachowaj tylko podstawowe ksztalty
             shapes.erase(std::remove_if(shapes.begin(), shapes.end(),
                 [](const std::shared_ptr<ShapeObject>& shape) {
-                    // Usun tylko te stworzone przez klikniecia
-                    PointShape* ps = dynamic_cast<PointShape*>(shape.get());
-                    // Sprawdz czy to PointShape i czy ma wieksza wspolrzedna x niz 200
-                    if (ps) {
-                        // Uzyj metody Point2D przez publiczny interfejs PointShape
-                        return true; // Tymczasowo usuwamy wszystkie PointShape
-                    }
-                    return false;
+                    return dynamic_cast<PointShape*>(shape.get()) != nullptr;
                 }), shapes.end());
         }
         else if (key == ALLEGRO_KEY_Y) {
             animate_sprite = !animate_sprite;
         }
-
-        // Przekaz input do gracza
-        ALLEGRO_EVENT ev;
-        ev.type = ALLEGRO_EVENT_KEY_DOWN;
-        ev.keyboard.keycode = key;
-        player.handleEvent(ev);
+        // NOWE KLAWISZE do algorytmów
+        else if (key == ALLEGRO_KEY_O) { // O - przełącz algorytm okręgu
+            use_custom_circle_algorithm = !use_custom_circle_algorithm;
+        }
+        else if (key == ALLEGRO_KEY_E) { // E - przełącz algorytm elipsy
+            use_custom_ellipse_algorithm = !use_custom_ellipse_algorithm;
+        }
+        else if (key == ALLEGRO_KEY_U) { // U - pokaż/ukryj własne prymitywy
+            show_custom_primitives = !show_custom_primitives;
+        }
+        // NOWE KLAWISZE do rysowania kształtów
+        else if (key == ALLEGRO_KEY_1) { // 1 - okrąg
+            if (current_drawing_mode == DRAW_CIRCLE) {
+                current_drawing_mode = DRAW_NONE;
+            } else {
+                current_drawing_mode = DRAW_CIRCLE;
+            }
+        }
+        else if (key == ALLEGRO_KEY_2) { // 2 - elipsa
+            if (current_drawing_mode == DRAW_ELLIPSE) {
+                current_drawing_mode = DRAW_NONE;
+            } else {
+                current_drawing_mode = DRAW_ELLIPSE;
+            }
+        }
+        else if (key == ALLEGRO_KEY_3) { // 3 - prostokąt
+            if (current_drawing_mode == DRAW_RECTANGLE) {
+                current_drawing_mode = DRAW_NONE;
+            } else {
+                current_drawing_mode = DRAW_RECTANGLE;
+            }
+        }
+        else if (key == ALLEGRO_KEY_4) { // 4 - trójkąt  // NOWE
+            if (current_drawing_mode == DRAW_TRIANGLE) {
+                current_drawing_mode = DRAW_NONE;
+            } else {
+                current_drawing_mode = DRAW_TRIANGLE;
+            }
+        }
     }
 
     virtual void on_key_release(int key) override {
@@ -374,33 +746,54 @@ public:
     }
 
     virtual void on_mouse_click(int button, int x, int y) override {
-        if (button == 1) { // Lewy przycisk - dodaj punkt
-            points.push_back(Point2D(x, y));
+        if (button == 1) { // Lewy przycisk
+            if (current_drawing_mode == DRAW_NONE) {
+                // Standardowe dodawanie punktów
+                points.push_back(Point2D(x, y));
 
-            // Jesli mamy przynajmniej 2 punkty, tworzymy odcinek
-            if (points.size() >= 2) {
-                segments.push_back(LineSegment(
-                    points[points.size()-2],
-                    points[points.size()-1]
-                ));
+                if (points.size() >= 2) {
+                    segments.push_back(LineSegment(
+                        points[points.size()-2],
+                        points[points.size()-1]
+                    ));
+                }
+
+                auto newPoint = std::make_shared<PointShape>(x, y, 8.0f);
+                shapes.push_back(newPoint);
+            } else {
+                if (!drawing_active) {
+                    // Rozpocznij rysowanie kształtu
+                    startDrawing(current_drawing_mode, x, y);
+                } else {
+                    // Zakończ rysowanie (puszczenie LPM)
+                    finishDrawing();
+                }
             }
-
-            // Dodaj rowniez PointShape w tym miejscu
-            auto newPoint = std::make_shared<PointShape>(x, y, 8.0f);
-            shapes.push_back(newPoint);
         }
-        else if (button == 2) { // Prawy przycisk - wyczysc punkty
-            points.clear();
-            segments.clear();
-            shapes.erase(std::remove_if(shapes.begin(), shapes.end(),
-                [](const std::shared_ptr<ShapeObject>& shape) {
-                    return dynamic_cast<PointShape*>(shape.get()) != nullptr;
-                }), shapes.end());
+        else if (button == 2) { // Prawy przycisk
+            if (drawing_active) {
+                // Anuluj rysowanie
+                drawing_active = false;
+                current_drawing_mode = DRAW_NONE;
+            } else {
+                // Wyczyść punkty
+                points.clear();
+                segments.clear();
+                drawn_shapes.clear();
+                shapes.erase(std::remove_if(shapes.begin(), shapes.end(),
+                    [](const std::shared_ptr<ShapeObject>& shape) {
+                        return dynamic_cast<PointShape*>(shape.get()) != nullptr;
+                    }), shapes.end());
+            }
+        }
+        else if (button == 3) { // Środkowy przycisk - zakończ rysowanie
+            finishDrawing();
         }
     }
 
     virtual void on_mouse_move(int x, int y) override {
-        // Sledzenie pozycji myszy - mozesz dodac interakcje
+        // Aktualizuj pozycję rysowania
+        updateDrawing(x, y);
     }
 
     void initialize_game() {
@@ -412,6 +805,11 @@ public:
         animate_shapes = false;
         animate_sprite = false;
         fill_primitives = false;
+        use_custom_circle_algorithm = false;
+        use_custom_ellipse_algorithm = false;
+        show_custom_primitives = true;
+        current_drawing_mode = DRAW_NONE;
+        drawing_active = false;
 
         // Przykladowe punkty i odcinki
         create_sample_geometry();
