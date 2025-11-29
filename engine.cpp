@@ -69,7 +69,7 @@ bool Engine::initialize(int width, int height, DisplayMode mode, int target_fps,
         al_register_event_source(event_queue, al_get_mouse_event_source());
     }
 
-    // Tworzenie bufora po�redniego je�li podw�jne buforowanie jest w��czone
+    // Tworzenie bufora pośredniego jeśli podwójne buforowanie jest włączone
     if (double_buffering) {
         buffer = al_create_bitmap(screen_width, screen_height);
         if (!buffer) {
@@ -90,10 +90,23 @@ bool Engine::initialize(int width, int height, DisplayMode mode, int target_fps,
 }
 
 bool Engine::initialize_graphics() {
-    int flags = 0;
+    int flags = 0; // Domyślnie bez flag
 
     if (display_mode == FULLSCREEN) {
-        flags |= ALLEGRO_FULLSCREEN_WINDOW;
+        flags |= ALLEGRO_FULLSCREEN;
+
+        // Pobierz rozdzielczość pulpitu dla pełnego ekranu
+        ALLEGRO_MONITOR_INFO info;
+        if (al_get_monitor_info(0, &info)) {
+            screen_width = info.x2 - info.x1;
+            screen_height = info.y2 - info.y1;
+            log_message("Fullscreen resolution: " + std::to_string(screen_width) + "x" + std::to_string(screen_height));
+        } else {
+            log_message("Warning: Could not get monitor info, using default resolution");
+        }
+    } else {
+        // Tryb okienkowy - użyj domyślnej rozdzielczości
+        flags |= ALLEGRO_WINDOWED;
     }
 
     al_set_new_display_flags(flags);
@@ -105,7 +118,9 @@ bool Engine::initialize_graphics() {
     }
 
     al_set_window_title(display, "2D Game Engine");
-    log_message("Graphics initialized");
+    log_message("Graphics initialized - Mode: " +
+                std::string((display_mode == FULLSCREEN) ? "FULLSCREEN" : "WINDOWED") +
+                " Resolution: " + std::to_string(screen_width) + "x" + std::to_string(screen_height));
     return true;
 }
 
@@ -199,6 +214,86 @@ void Engine::end_frame() {
         al_draw_bitmap(buffer, 0, 0, 0);
     }
     al_flip_display();
+}
+
+// NEW: Fullscreen toggle method
+void Engine::toggle_fullscreen() {
+    log_message("Toggling fullscreen...");
+
+    // Zachowaj stan timera
+    bool was_timer_running = al_get_timer_started(timer);
+    if (was_timer_running) {
+        al_stop_timer(timer);
+    }
+
+    // Zamknij obecny display
+    if (display) {
+        al_destroy_display(display);
+        display = nullptr;
+    }
+
+    // Przełącz tryb
+    DisplayMode new_mode = (display_mode == WINDOWED) ? FULLSCREEN : WINDOWED;
+
+    // Ustaw nowy tryb i zainicjalizuj grafikę
+    display_mode = new_mode;
+    if (!initialize_graphics()) {
+        show_error("Failed to toggle fullscreen!");
+        // Fallback: spróbuj wrócić do poprzedniego trybu
+        display_mode = (new_mode == WINDOWED) ? FULLSCREEN : WINDOWED;
+        if (!initialize_graphics()) {
+            show_error("Critical: Failed to restore display after fullscreen toggle!");
+            return;
+        }
+    }
+
+    // Ponowna rejestracja event sources
+    al_register_event_source(event_queue, al_get_display_event_source(display));
+
+    // Przebuduj bufor jeśli używany
+    if (double_buffering) {
+        if (buffer) {
+            al_destroy_bitmap(buffer);
+        }
+        buffer = al_create_bitmap(screen_width, screen_height);
+        if (!buffer) {
+            log_message("Warning: Could not recreate intermediate buffer after fullscreen toggle");
+            double_buffering = false;
+        }
+    }
+
+    // Przebuduj font jeśli potrzebny
+    if (font) {
+        al_destroy_font(font);
+    }
+    font = al_create_builtin_font();
+    if (!font) {
+        log_message("Warning: Could not recreate font after fullscreen toggle");
+    }
+
+    // Wznów timer jeśli był uruchomiony
+    if (was_timer_running) {
+        al_start_timer(timer);
+    }
+
+    log_message("Successfully switched to " +
+                std::string((display_mode == FULLSCREEN) ? "FULLSCREEN" : "WINDOWED"));
+}
+
+// NEW: Set specific display mode
+bool Engine::set_display_mode(DisplayMode mode) {
+    if (display_mode == mode) {
+        return true; // Już jest w żądanym trybie
+    }
+
+    display_mode = mode;
+
+    // Jeśli engine jest już uruchomiony, zastosuj zmianę natychmiast
+    if (display) {
+        toggle_fullscreen(); // To zaktualizuje display
+    }
+
+    return true;
 }
 
 void Engine::stop() {

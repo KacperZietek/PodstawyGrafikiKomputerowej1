@@ -269,21 +269,28 @@ public:
                         sprite_text.c_str());
             y_offset += 30;
 
+            // Informacja o trybie wyswietlania
+            std::string display_text = (get_display_mode() == FULLSCREEN) ?
+                "Tryb: PELNY EKRAN (F11)" : "Tryb: OKNO (F11)";
+            al_draw_text(get_font(), al_map_rgb(255, 200, 100), 10, y_offset, 0,
+                        display_text.c_str());
+            y_offset += 20;
+
             // Sterowanie
             al_draw_text(get_font(), al_map_rgb(255, 200, 100), 10, y_offset, 0,
                         "STEROWANIE:");
             y_offset += 20;
 
             al_draw_text(get_font(), al_map_rgb(200, 200, 200), 10, y_offset, 0,
-                        "SPACE - Algorytm | F - Wypelnienie | T - Animacja ksztaltow");
+                        "F11 - Pelny ekran | SPACE - Algorytm | F - Wypelnienie");
             y_offset += 20;
 
             al_draw_text(get_font(), al_map_rgb(200, 200, 200), 10, y_offset, 0,
-                        "Y - Animacja sprite | P - Gracz | B - Bitmapy");
+                        "T - Animacja ksztaltow | Y - Animacja sprite | P - Gracz");
             y_offset += 20;
 
             al_draw_text(get_font(), al_map_rgb(200, 200, 200), 10, y_offset, 0,
-                        "C - Czysc | R - Reset | ESC - Wyjscie");
+                        "B - Bitmapy | C - Czysc | R - Reset | ESC - Wyjscie");
             y_offset += 20;
 
             al_draw_text(get_font(), al_map_rgb(200, 200, 200), 10, y_offset, 0,
@@ -298,7 +305,9 @@ public:
             std::string stats = "Punkty: " + std::to_string(points.size()) +
                                " | Odcinki: " + std::to_string(segments.size()) +
                                " | Ksztalty: " + std::to_string(shapes.size()) +
-                               " | FPS: " + std::to_string(current_fps);
+                               " | FPS: " + std::to_string(current_fps) +
+                               " | Rozdzielczosc: " + std::to_string(get_screen_width()) +
+                               "x" + std::to_string(get_screen_height());
             al_draw_text(get_font(), al_map_rgb(100, 255, 100), 10, y_offset, 0,
                         stats.c_str());
         }
@@ -307,6 +316,9 @@ public:
     virtual void on_key_press(int key) override {
         if (key == ALLEGRO_KEY_ESCAPE) {
             stop();
+        }
+        else if (key == ALLEGRO_KEY_F11) { // DODANE: Przełączanie fullscreen
+            toggle_fullscreen();
         }
         else if (key == ALLEGRO_KEY_SPACE) {
             use_incremental_algorithm = !use_incremental_algorithm;
@@ -320,7 +332,7 @@ public:
         else if (key == ALLEGRO_KEY_F) {
             fill_primitives = !fill_primitives;
         }
-        else if (key == ALLEGRO_KEY_T) {  // ZMIENIONE z A na T
+        else if (key == ALLEGRO_KEY_T) {
             animate_shapes = !animate_shapes;
         }
         else if (key == ALLEGRO_KEY_R) {
@@ -346,7 +358,7 @@ public:
                     return false;
                 }), shapes.end());
         }
-        else if (key == ALLEGRO_KEY_Y) {  // ZMIENIONE z 1 na Y
+        else if (key == ALLEGRO_KEY_Y) {
             animate_sprite = !animate_sprite;
         }
 

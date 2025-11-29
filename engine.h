@@ -56,9 +56,14 @@ public:
     void log_message(const std::string& message);
     void show_error(const std::string& error);
 
+    // NEW: Fullscreen methods
+    void toggle_fullscreen();
+    bool set_display_mode(DisplayMode mode);
+
     // Gettery
     int get_screen_width() const { return screen_width; }
     int get_screen_height() const { return screen_height; }
+    DisplayMode get_display_mode() const { return display_mode; }
     bool is_running() const { return running; }
     ALLEGRO_FONT* get_font() const { return font; }
     ALLEGRO_BITMAP* get_buffer() const { return buffer; }
