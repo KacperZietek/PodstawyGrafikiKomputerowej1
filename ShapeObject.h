@@ -6,10 +6,10 @@
 #include <cmath>
 
 enum ShapeType {
-    POLYGON, // Trójkąt, Prostokąt, Gwiazda
+    POLYGON,
     CIRCLE,
     ELLIPSE,
-    LINE     // --- NOWOŚĆ: LINIA ---
+    LINE
 };
 
 class ShapeObject : public UpdatableObject, public DrawableObject, public TransformableObject {
@@ -42,9 +42,9 @@ public:
         return obj;
     }
 
-    // --- NOWOŚĆ: Metoda tworząca linię ---
+    //metoda tworząca linie
     static ShapeObject* createLine(float x1, float y1, float x2, float y2, ALLEGRO_COLOR col) {
-        ShapeObject* obj = new ShapeObject(0, 0, col); // Pozycja 0,0, punkty absolutne
+        ShapeObject* obj = new ShapeObject(0, 0, col);
         obj->type = LINE;
         obj->addVertex(x1, y1);
         obj->addVertex(x2, y2);
@@ -69,15 +69,13 @@ public:
         else if (type == ELLIPSE) {
             renderer->drawEllipse((int)position.getX(), (int)position.getY(), (int)radiusX, (int)radiusY, color);
         }
-        // --- NOWOŚĆ: Rysowanie linii algorytmem przyrostowym ---
+        //rysowanie linii algorytmem przyrostowym
         else if (type == LINE) {
             if (vertices.size() >= 2) {
                 renderer->drawLineIncremental(vertices[0], vertices[1], color);
             }
         }
     }
-
-    // --- TRANSFORMACJE (Dla Linii działają tak samo jak dla Wielokąta) ---
 
     void translate(float dx, float dy) override {
         position.setX(position.getX() + dx);

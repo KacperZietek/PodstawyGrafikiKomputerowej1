@@ -3,25 +3,24 @@
 
 #include "PrimitiveRenderer.h"
 
-// Klasa bazowa
+//klasa bazowa
 class GameObject {
 public:
     virtual ~GameObject() {}
 };
 
-// Obiekty z logik¹ (update)
 class UpdatableObject : public virtual GameObject {
 public:
     virtual void update(float deltaTime) = 0;
 };
 
-// Obiekty rysowalne
+//obiekty rysowalne
 class DrawableObject : public virtual GameObject {
 public:
     virtual void draw(PrimitiveRenderer* renderer) = 0;
 };
 
-// Obiekty transformowalne
+//obiekty transformowalne
 class TransformableObject : public virtual GameObject {
 public:
     virtual void translate(float dx, float dy) = 0;
@@ -29,7 +28,7 @@ public:
     virtual void scale(float k, float ox, float oy) = 0;
 };
 
-// Obiekty animowane
+//obiekty animowane
 class AnimatedObject : public virtual GameObject {
 public:
     virtual void animate(float deltaTime) = 0;

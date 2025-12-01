@@ -8,23 +8,22 @@
 
 class BitmapHandler {
 private:
-    // Cache: przechowuje za³adowane bitmapy, ¿eby nie dublowaæ ich w pamiêci
+    //przechowywanie bitmap
     std::map<std::string, ALLEGRO_BITMAP*> bitmaps;
 
 public:
     BitmapHandler();
     ~BitmapHandler();
 
-    // Wczytuje bitmapê z pliku (lub zwraca ju¿ wczytan¹)
+    //wczytuje bitmape pliku
     ALLEGRO_BITMAP* loadBitmap(const std::string& filename);
 
-    // Tworzy pust¹ bitmapê
+    //tworzy pusta bitmape
     ALLEGRO_BITMAP* createBitmap(int width, int height);
 
-    // Usuwa konkretn¹ bitmapê
+    //usuwa konkretna bitmape
     void destroyBitmap(const std::string& filename);
 
-    // Czyœci wszystko (przy zamykaniu gry)
     void cleanup();
 };
 

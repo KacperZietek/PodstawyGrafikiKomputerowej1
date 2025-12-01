@@ -3,7 +3,6 @@
 
 #include "Point2D.h"
 
-// Klasa reprezentuj¹ca odcinek (Wymaganie Lab 02)
 class LineSegment {
 private:
     Point2D start;

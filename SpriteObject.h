@@ -4,7 +4,7 @@
 #include "BitmapObject.h"
 
 class SpriteObject : public BitmapObject, public AnimatedObject {
-protected: // Zmienione na protected, ¿eby Player mia³ dostêp
+protected:
     int frameWidth;
     int frameHeight;
     int currentFrame;
@@ -47,7 +47,6 @@ public:
         }
     }
 
-    // Dziêki naprawie BitmapObject, teraz mo¿emy to bezpiecznie nadpisaæ
     void update(float deltaTime) override {
         animate(deltaTime);
     }

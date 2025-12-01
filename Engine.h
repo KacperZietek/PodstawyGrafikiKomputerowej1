@@ -10,7 +10,7 @@
 #include "Player.h"
 #include "ShapeObject.h"
 
-// Tryby rysowania
+//tryby rysowania
 enum EditorMode {
     MODE_NONE,
     MODE_RECT,
@@ -44,13 +44,13 @@ private:
     PrimitiveRenderer* renderer = nullptr;
     BitmapHandler* bitmapHandler = nullptr;
 
-    // Obiekty
+    //obiekty
     Player* player = nullptr;
     ShapeObject* rotatingTriangle = nullptr;
     ShapeObject* pulsingRect = nullptr;
     ShapeObject* star = nullptr;
 
-    // Edytor
+    //edytor
     std::vector<ShapeObject*> drawnShapes;
     EditorMode currentMode = MODE_NONE;
     bool isDrawing = false;
@@ -60,11 +60,11 @@ private:
     float globalTime = 0.0f;
     bool isFullscreen = false;
 
-    // --- NOWOŚĆ: Zmienne do licznika FPS ---
-    double lastFpsTime = 0.0; // Kiedy ostatnio liczyliśmy
-    int frameCount = 0;       // Ile klatek w tej sekundzie
-    int displayedFPS = 0;     // Wartość do wyświetlenia
-    // ----------------------------------------
+    //licznik FPS
+    double lastFpsTime = 0.0;
+    int frameCount = 0;
+    int displayedFPS = 0;
+
 
     void processEvents();
     void update();

@@ -8,18 +8,18 @@
 // Konstruktor
 Engine::Engine() {}
 
-// Destruktor
+//destruktor
 Engine::~Engine() {
     cleanup();
 }
 
-// Singleton
+//singleton
 Engine& Engine::getInstance() {
     static Engine instance;
     return instance;
 }
 
-// Metoda pomocnicza do kolizji (AABB)
+//metoda pomocnicza do kolizji
 bool Engine::checkCollision(float x1, float y1, float w1, float h1,
                             float x2, float y2, float w2, float h2) {
     return x1 < x2 + w2 &&
@@ -28,7 +28,7 @@ bool Engine::checkCollision(float x1, float y1, float w1, float h1,
            y1 + h1 > y2;
 }
 
-// Inicjalizacja
+//inicjalizacja
 bool Engine::init(const char* title) {
     if (!al_init()) return false;
     if (!al_install_keyboard()) return false;
@@ -36,19 +36,19 @@ bool Engine::init(const char* title) {
     if (!al_init_primitives_addon()) return false;
     if (!al_init_image_addon()) return false;
 
-    // Fonty
+    //fonty
     al_init_font_addon();
     al_init_ttf_addon();
 
     timer = al_create_timer(1.0 / FPS);
 
-    // Okno
+    // okno
     al_set_new_display_flags(ALLEGRO_WINDOWED | ALLEGRO_RESIZABLE);
     display = al_create_display(LOGICAL_WIDTH, LOGICAL_HEIGHT);
     if (!display) return false;
     al_set_window_title(display, title);
 
-    // Bufor techniczny
+    // bufor techniczny
     buffer = al_create_bitmap(LOGICAL_WIDTH, LOGICAL_HEIGHT);
     if (!buffer) return false;
 
@@ -60,23 +60,22 @@ bool Engine::init(const char* title) {
     al_register_event_source(eventQueue, al_get_keyboard_event_source());
     al_register_event_source(eventQueue, al_get_mouse_event_source());
 
-    // Narzędzia
+    //narzedzia
     renderer = new PrimitiveRenderer();
     bitmapHandler = new BitmapHandler();
 
-    // --- OBIEKTY DEMO ---
 
-    // 1. Gracz (środek)
+    //gracz
     player = new Player(bitmapHandler, 400, 300);
 
-    // 2. Trójkąt (lewy dół)
+    //trojkat
     float tx = 200, ty = 400;
     rotatingTriangle = new ShapeObject(tx, ty, al_map_rgb(0, 255, 0));
     rotatingTriangle->addVertex(tx + 0,   ty - 50);
     rotatingTriangle->addVertex(tx - 50,  ty + 50);
     rotatingTriangle->addVertex(tx + 50,  ty + 50);
 
-    // 3. Kwadrat (prawy dół)
+    //kwadrat
     float rx = 600, ry = 400;
     pulsingRect = new ShapeObject(rx, ry, al_map_rgb(255, 255, 0));
     pulsingRect->addVertex(rx - 40, ry - 40);
@@ -84,7 +83,7 @@ bool Engine::init(const char* title) {
     pulsingRect->addVertex(rx + 40, ry + 40);
     pulsingRect->addVertex(rx - 40, ry + 40);
 
-    // 4. Gwiazda (prawy górny róg)
+    //gwiazda
     float sx = 650, sy = 150;
     star = new ShapeObject(sx, sy, al_map_rgb(255, 215, 0), false);
     star->addVertex(sx, sy - 40); star->addVertex(sx + 10, sy - 10);
@@ -100,7 +99,7 @@ bool Engine::init(const char* title) {
 
 void Engine::run() {
     isRunning = true;
-    lastFpsTime = al_get_time(); // Init czasu dla FPS
+    lastFpsTime = al_get_time(); //init czasu dla FPS
 
     while (isRunning) {
         processEvents();
@@ -120,7 +119,7 @@ void Engine::updateScaleFactors() {
     offsetY = (windowHeight - LOGICAL_HEIGHT * scale) / 2.0f;
 }
 
-// Obsługa Zdarzeń
+//obsluga zdarzen
 void Engine::processEvents() {
     ALLEGRO_EVENT ev;
     al_wait_for_event(eventQueue, &ev);
@@ -136,12 +135,12 @@ void Engine::processEvents() {
         al_acknowledge_resize(display);
         updateScaleFactors();
     }
-    // --- KLAWIATURA ---
+    //klawiatura
     else if (ev.type == ALLEGRO_EVENT_KEY_DOWN) {
         if (ev.keyboard.keycode == ALLEGRO_KEY_ESCAPE) isRunning = false;
         if (ev.keyboard.keycode == ALLEGRO_KEY_F) toggleFullscreen();
 
-        // Wybór narzędzi
+        //wybor narzedzi
         if (ev.keyboard.keycode == ALLEGRO_KEY_1) { currentMode = MODE_RECT; std::cout << "Tryb: Prostokat" << std::endl; }
         if (ev.keyboard.keycode == ALLEGRO_KEY_2) { currentMode = MODE_CIRCLE; std::cout << "Tryb: Kolo" << std::endl; }
         if (ev.keyboard.keycode == ALLEGRO_KEY_3) { currentMode = MODE_TRIANGLE; std::cout << "Tryb: Trojkat" << std::endl; }
@@ -150,14 +149,14 @@ void Engine::processEvents() {
 
         if (ev.keyboard.keycode == ALLEGRO_KEY_0) { currentMode = MODE_NONE; std::cout << "Tryb: Brak" << std::endl; }
 
-        // Reset
+        //reset
         if (ev.keyboard.keycode == ALLEGRO_KEY_R) {
             for (auto* s : drawnShapes) delete s;
             drawnShapes.clear();
             std::cout << "Zresetowano ksztalty!" << std::endl;
         }
     }
-    // --- MYSZ ---
+    //mysz
     else if (ev.type == ALLEGRO_EVENT_MOUSE_AXES) {
         currentMousePos.setX((ev.mouse.x - offsetX) / scale);
         currentMousePos.setY((ev.mouse.y - offsetY) / scale);
@@ -167,7 +166,7 @@ void Engine::processEvents() {
         float gy = (ev.mouse.y - offsetY) / scale;
 
         if (gx >= 0 && gx <= LOGICAL_WIDTH && gy >= 0 && gy <= LOGICAL_HEIGHT) {
-            // LEWY PRZYCISK: Rysowanie
+            //rysowanie
             if (ev.mouse.button == 1) {
                 if (currentMode != MODE_NONE) {
                     if (!isDrawing) {
@@ -180,7 +179,7 @@ void Engine::processEvents() {
                     }
                 }
             }
-            // PRAWY PRZYCISK: Kolorowanie (STOP-KLATKA)
+            //kolorowanie
             else if (ev.mouse.button == 2) {
                 al_set_target_bitmap(buffer);
                 al_clear_to_color(al_map_rgb(50, 50, 50));
@@ -204,9 +203,8 @@ void Engine::processEvents() {
                 if (font) {
                     al_identity_transform(&identity);
                     al_use_transform(&identity);
-                    // Podczas pauzy też pokazujemy FPS
                     al_draw_textf(font, al_map_rgb(0, 255, 0), 780, 10, ALLEGRO_ALIGN_RIGHT, "FPS: %d", displayedFPS);
-                    // ... (reszta UI)
+
                 }
 
                 al_set_target_backbuffer(display);
@@ -227,7 +225,7 @@ void Engine::processEvents() {
     }
 }
 
-// Logika tworzenia kształtów
+//tworzenie ksztaltow
 void Engine::createShapeFromInput() {
     float x1 = startDragPos.getX();
     float y1 = startDragPos.getY();
@@ -263,7 +261,7 @@ void Engine::createShapeFromInput() {
     if (newShape) drawnShapes.push_back(newShape);
 }
 
-// Podgląd (Duch)
+//podglad
 void Engine::renderPreviewShape() {
     float x1 = startDragPos.getX();
     float y1 = startDragPos.getY();
@@ -312,7 +310,7 @@ void Engine::update() {
 }
 
 void Engine::render() {
-    // --- OBLICZANIE FPS ---
+    //licznie fpsow
     frameCount++;
     double currentTime = al_get_time();
     if (currentTime - lastFpsTime >= 1.0) {
@@ -320,9 +318,8 @@ void Engine::render() {
         frameCount = 0;
         lastFpsTime = currentTime;
     }
-    // ----------------------
 
-    // 1. Rysowanie na buforze
+    //rysowanie na buforze
     al_set_target_bitmap(buffer);
     al_clear_to_color(al_map_rgb(50, 50, 50));
 
@@ -330,12 +327,12 @@ void Engine::render() {
     al_identity_transform(&identity);
     al_use_transform(&identity);
 
-    // Tło
+    //tlo
     renderer->drawCircle(150, 100, 40, al_map_rgb(255, 255, 255));
     renderer->drawEllipse(650, 100, 60, 30, al_map_rgb(100, 100, 255));
     renderer->drawLineIncremental(Point2D(190, 100), Point2D(590, 100), al_map_rgb(100, 100, 100));
 
-    // Obiekty
+    //obiekty
     if (rotatingTriangle) rotatingTriangle->draw(renderer);
     if (pulsingRect) pulsingRect->draw(renderer);
     if (star) star->draw(renderer);
@@ -343,7 +340,6 @@ void Engine::render() {
     if (player) player->draw(renderer);
     if (isDrawing) renderPreviewShape();
 
-    // UI
     if (font) {
         al_identity_transform(&identity);
         al_use_transform(&identity);
@@ -362,9 +358,9 @@ void Engine::render() {
 
         al_draw_text(font, al_map_rgb(0, 255, 255), 10, 55, 0, modeText.c_str());
 
-        // --- WYŚWIETLANIE FPS ---
+        //wyswietlanie FPS
         al_draw_textf(font, al_map_rgb(0, 255, 0), 780, 10, ALLEGRO_ALIGN_RIGHT, "FPS: %d", displayedFPS);
-        // -----------------------
+
 
         ALLEGRO_MOUSE_STATE ms;
         al_get_mouse_state(&ms);
@@ -373,7 +369,7 @@ void Engine::render() {
         renderer->drawPoint(mx, my, al_map_rgb(255, 0, 0));
     }
 
-    // 2. Skalowanie na ekran
+    //skalowanie na ekran
     al_set_target_backbuffer(display);
     al_clear_to_color(al_map_rgb(0, 0, 0));
 

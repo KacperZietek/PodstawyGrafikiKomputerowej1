@@ -3,9 +3,6 @@
 #include <cmath>
 #include <algorithm>
 
-// ---------------------------------------------------------
-// HELPERY I USTAWIENIA
-// ---------------------------------------------------------
 
 bool PrimitiveRenderer::areColorsEqual(ALLEGRO_COLOR c1, ALLEGRO_COLOR c2) {
     unsigned char r1, g1, b1, a1;
@@ -15,20 +12,15 @@ bool PrimitiveRenderer::areColorsEqual(ALLEGRO_COLOR c1, ALLEGRO_COLOR c2) {
     return r1 == r2 && g1 == g2 && b1 == b2 && a1 == a2;
 }
 
-// ---------------------------------------------------------
-// PODSTAWOWE PRYMITYWY (PUNKT, LINIA)
-// ---------------------------------------------------------
-
 void PrimitiveRenderer::drawPoint(int x, int y, ALLEGRO_COLOR color) {
     al_draw_filled_circle(x, y, 1.5f, color);
 }
 
 void PrimitiveRenderer::drawLine(const Point2D& p1, const Point2D& p2, ALLEGRO_COLOR color) {
-    // U¿ywa wbudowanej funkcji Allegro (dla porównania)
     al_draw_line(p1.getX(), p1.getY(), p2.getX(), p2.getY(), color, 1.0f);
 }
 
-// ALGORYTM PRZYROSTOWY (LAB 02)
+//algorytm przyrostowy
 void PrimitiveRenderer::drawLineIncremental(const Point2D& p1, const Point2D& p2, ALLEGRO_COLOR color) {
     float x1 = p1.getX();
     float y1 = p1.getY();
@@ -37,11 +29,8 @@ void PrimitiveRenderer::drawLineIncremental(const Point2D& p1, const Point2D& p2
 
     float dx = x2 - x1;
     float dy = y2 - y1;
-
-    // Wybieramy wiêksz¹ ró¿nicê jako liczbê kroków
     float steps = (std::abs(dx) > std::abs(dy)) ? std::abs(dx) : std::abs(dy);
 
-    // Zapobiegamy dzieleniu przez zero (gdy punkty s¹ w tym samym miejscu)
     if (steps == 0) {
         drawPoint(std::round(x1), std::round(y1), color);
         return;
@@ -59,11 +48,8 @@ void PrimitiveRenderer::drawLineIncremental(const Point2D& p1, const Point2D& p2
     }
 }
 
-// ---------------------------------------------------------
-// LINIE £AMANE I WIELOK¥TY (LAB 02 i 03)
-// ---------------------------------------------------------
 
-// Rysowanie linii ³amanej (otwartej lub zamkniêtej)
+//rysowanie linii
 void PrimitiveRenderer::drawPolyline(const std::vector<Point2D>& points, ALLEGRO_COLOR color, bool closed) {
     if (points.size() < 2) return;
 
@@ -76,12 +62,12 @@ void PrimitiveRenderer::drawPolyline(const std::vector<Point2D>& points, ALLEGRO
     }
 }
 
-// Wielok¹t to po prostu zamkniêta linia ³amana
+//wielokat jako zlamana linia
 void PrimitiveRenderer::drawPolygon(const std::vector<Point2D>& points, ALLEGRO_COLOR color) {
     drawPolyline(points, color, true);
 }
 
-// Prostok¹t jako 4 linie
+//prostokat jako 4 linie
 void PrimitiveRenderer::drawRectangle(const Point2D& p1, float width, float height, ALLEGRO_COLOR color, bool filled) {
     if (filled) {
         al_draw_filled_rectangle(p1.getX(), p1.getY(), p1.getX() + width, p1.getY() + height, color);
@@ -97,9 +83,6 @@ void PrimitiveRenderer::drawRectangle(const Point2D& p1, float width, float heig
     }
 }
 
-// ---------------------------------------------------------
-// OKRÊGI I ELIPSY (LAB 03)
-// ---------------------------------------------------------
 
 void PrimitiveRenderer::putCirclePixels(int cx, int cy, int x, int y, ALLEGRO_COLOR color) {
     drawPoint(cx + x, cy + y, color);
@@ -112,7 +95,7 @@ void PrimitiveRenderer::putCirclePixels(int cx, int cy, int x, int y, ALLEGRO_CO
     drawPoint(cx - y, cy - x, color);
 }
 
-// Algorytm Bresenhama dla okrêgu
+//algorytm Bresenhama dla okregu
 void PrimitiveRenderer::drawCircle(int cx, int cy, int radius, ALLEGRO_COLOR color) {
     int x = 0;
     int y = radius;
@@ -139,13 +122,12 @@ void PrimitiveRenderer::putEllipsePixels(int cx, int cy, int x, int y, ALLEGRO_C
     drawPoint(cx - x, cy - y, color);
 }
 
-// Algorytm Midpoint dla elipsy
+//algorytm Midpoint dla elipsy
 void PrimitiveRenderer::drawEllipse(int cx, int cy, int rx, int ry, ALLEGRO_COLOR color) {
     float dx, dy, d1, d2, x, y;
     x = 0;
     y = ry;
 
-    // Region 1
     d1 = (ry * ry) - (rx * rx * ry) + (0.25f * rx * rx);
     dx = 2 * ry * ry * x;
     dy = 2 * rx * rx * y;
@@ -165,7 +147,6 @@ void PrimitiveRenderer::drawEllipse(int cx, int cy, int rx, int ry, ALLEGRO_COLO
         }
     }
 
-    // Region 2
     d2 = ((ry * ry) * ((x + 0.5f) * (x + 0.5f))) +
          ((rx * rx) * ((y - 1) * (y - 1))) -
          (rx * rx * ry * ry);
@@ -186,14 +167,11 @@ void PrimitiveRenderer::drawEllipse(int cx, int cy, int rx, int ry, ALLEGRO_COLO
     }
 }
 
-// ---------------------------------------------------------
-// WYPE£NIANIE (LAB 03 - FLOOD FILL)
-// ---------------------------------------------------------
 
 void PrimitiveRenderer::floodFill(int x, int y, ALLEGRO_COLOR replacementColor) {
     ALLEGRO_BITMAP* target_bitmap = al_get_target_bitmap();
 
-    // Blokowanie bitmapy dla wydajnoœci
+    //blokowanie bitmapy
     ALLEGRO_LOCKED_REGION* region = al_lock_bitmap(target_bitmap, ALLEGRO_PIXEL_FORMAT_ANY, ALLEGRO_LOCK_READWRITE);
     if (!region) return;
 
@@ -207,7 +185,7 @@ void PrimitiveRenderer::floodFill(int x, int y, ALLEGRO_COLOR replacementColor) 
 
     ALLEGRO_COLOR targetColor = al_get_pixel(target_bitmap, x, y);
 
-    // Jeœli kolor jest taki sam, nie ma co robiæ
+    //jezeli kolor jest taki sam to nie podminia
     if (areColorsEqual(targetColor, replacementColor)) {
         al_unlock_bitmap(target_bitmap);
         return;

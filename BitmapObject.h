@@ -5,7 +5,6 @@
 #include "Point2D.h"
 #include <allegro5/allegro.h>
 
-// WA¯NE: Musi dziedziczyæ po UpdatableObject!
 class BitmapObject : public DrawableObject, public TransformableObject, public UpdatableObject {
 protected:
     ALLEGRO_BITMAP* bitmap;
@@ -28,7 +27,6 @@ public:
 
     virtual ~BitmapObject() {}
 
-    // Pusta implementacja update (konieczna dla dziedziczenia!)
     void update(float deltaTime) override {}
 
     void draw(PrimitiveRenderer* renderer) override {
@@ -57,7 +55,6 @@ public:
         scaleY *= k;
     }
 
-    // Nowa metoda dla wygody (naprawia problem z kolizjami)
     Point2D getPosition() const { return position; }
 
     int getWidth() const { return width; }

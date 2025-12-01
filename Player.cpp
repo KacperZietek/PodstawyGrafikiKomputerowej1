@@ -1,7 +1,6 @@
 #include "Player.h"
 #include <iostream>
 
-// Upewnij siê, ¿e te wymiary pasuj¹ do Twojego pliku!
 const char* PLAYER_IMAGE = "walk.png";
 const int FRAME_H = 128;
 const int FRAME_W = 128;
@@ -12,7 +11,7 @@ Player::Player(BitmapHandler* handler, float x, float y)
     : SpriteObject(handler->loadBitmap(PLAYER_IMAGE), x, y, FRAME_W, FRAME_H, TOTAL_FRAMES, ANIM_SPEED),
       speed(200.0f)
 {
-    // Skalowanie (jeœli postaæ jest za du¿a)
+    //skalowanie
     scale(0.8f, 0, 0);
 
     if (!bitmap) {
@@ -21,10 +20,10 @@ Player::Player(BitmapHandler* handler, float x, float y)
 }
 
 void Player::update(float deltaTime) {
-    // 1. Animacja
+    //animacja
     SpriteObject::animate(deltaTime);
 
-    // 2. Ruch i Odbicie lustrzane
+    //ruch i Odbicie lustrzane
     ALLEGRO_KEYBOARD_STATE keyState;
     al_get_keyboard_state(&keyState);
 
@@ -37,14 +36,13 @@ void Player::update(float deltaTime) {
         translate(0, moveDist);
     }
 
-    // IDZIEMY W LEWO
+    //ruch w lewo
     if (al_key_down(&keyState, ALLEGRO_KEY_A) || al_key_down(&keyState, ALLEGRO_KEY_LEFT)) {
         translate(-moveDist, 0);
-        setFlip(true); // <-- Obróæ w lewo
+        setFlip(true);
     }
-    // IDZIEMY W PRAWO
+    //ruch w prawo
     if (al_key_down(&keyState, ALLEGRO_KEY_D) || al_key_down(&keyState, ALLEGRO_KEY_RIGHT)) {
         translate(moveDist, 0);
-        setFlip(false); // <-- Obróæ w prawo (normalnie)
-    }
-}
+        setFlip(false);
+}}

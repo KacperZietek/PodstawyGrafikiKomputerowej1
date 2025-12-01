@@ -8,22 +8,22 @@ BitmapHandler::~BitmapHandler() {
 }
 
 ALLEGRO_BITMAP* BitmapHandler::loadBitmap(const std::string& filename) {
-    // 1. SprawdŸ, czy ju¿ mamy tê bitmapê w cache
+    // sprawdzamy bitmape w cache
     auto it = bitmaps.find(filename);
     if (it != bitmaps.end()) {
         return it->second;
     }
 
-    // 2. Jeœli nie, spróbuj za³adowaæ z dysku
+    // jesli nie zaladuj z dysku
     ALLEGRO_BITMAP* bmp = al_load_bitmap(filename.c_str());
     if (!bmp) {
-        std::cerr << "B³¹d: Nie uda³o siê za³adowaæ bitmapy: " << filename << std::endl;
+        std::cerr << "Blad: Nie udalo sie zaladowac bitmapy: " << filename << std::endl;
         return nullptr;
     }
 
-    // 3. Zapisz w cache i zwróæ
+    // Zapisanie w cache
     bitmaps[filename] = bmp;
-    std::cout << "Za³adowano bitmapê: " << filename << std::endl;
+    std::cout << "Zaladowano bitmape: " << filename << std::endl;
     return bmp;
 }
 

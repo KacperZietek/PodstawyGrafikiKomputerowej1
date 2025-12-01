@@ -2,7 +2,7 @@
 #define PLAYER_H
 
 #include "SpriteObject.h"
-#include "BitmapHandler.h" // Potrzebne do definicji wskaünika
+#include "BitmapHandler.h"
 #include <allegro5/allegro.h>
 
 class Player : public SpriteObject {
@@ -11,8 +11,6 @@ private:
 
 public:
     Player(BitmapHandler* handler, float x, float y);
-
-    // Teraz override zadzia≥a, bo dziedziczenie jest naprawione
     void update(float deltaTime) override;
 };
 

@@ -3,7 +3,6 @@
 
 #include <allegro5/allegro_primitives.h>
 
-// Klasa reprezentuj¹ca punkt 2D (Wymaganie Lab 02)
 class Point2D {
 private:
     float x, y;
@@ -16,7 +15,7 @@ public:
     void setX(float newX) { x = newX; }
     void setY(float newY) { y = newY; }
 
-    // Metoda do rysowania punktu (wykorzystuje prymitywy Allegro)
+    //metoda do rysowania punktu
     void draw(ALLEGRO_COLOR color) const {
         al_draw_filled_circle(x, y, 2.0f, color);
     }
