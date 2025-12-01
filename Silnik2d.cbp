@@ -11,6 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+<<<<<<< Updated upstream
 				<Option projectLinkerOptionsRelation="1" />
 				<Compiler>
 					<Add option="-g" />
@@ -29,6 +30,11 @@
 					<Add library="D:/allegro/lib/liballegro_ttf.dll.a" />
 					<Add directory="D:/allegro/lib" />
 				</Linker>
+=======
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+>>>>>>> Stashed changes
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/Silnik2d" prefix_auto="1" extension_auto="1" />
@@ -49,14 +55,22 @@
 			<Add directory="../../../allegro/include" />
 		</Compiler>
 		<Linker>
+<<<<<<< Updated upstream
 			<Add library="../../../allegro/lib/liballegro_acodec.dll.a" />
 			<Add library="../../../allegro/lib/liballegro_audio.dll.a" />
+=======
+			<Add library="../../../allegro/lib/liballegro.dll.a" />
+			<Add library="../../../allegro/lib/liballegro_acodec.dll.a" />
+			<Add library="../../../allegro/lib/liballegro_audio.dll.a" />
+			<Add library="../../../allegro/lib/liballegro_color.dll.a" />
+>>>>>>> Stashed changes
 			<Add library="../../../allegro/lib/liballegro_dialog.dll.a" />
 			<Add library="../../../allegro/lib/liballegro_font.dll.a" />
 			<Add library="../../../allegro/lib/liballegro_image.dll.a" />
 			<Add library="../../../allegro/lib/liballegro_main.dll.a" />
 			<Add library="../../../allegro/lib/liballegro_primitives.dll.a" />
 			<Add library="../../../allegro/lib/liballegro_ttf.dll.a" />
+<<<<<<< Updated upstream
 			<Add library="../../../allegro/lib/liballegro_color.dll.a" />
 			<Add library="../../../allegro/lib/liballegro.dll.a" />
 			<Add directory="../../../allegro/lib" />
@@ -78,10 +92,32 @@
 			<Option compile="1" />
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+=======
+			<Add directory="../../../allegro/include" />
+		</Linker>
+		<Unit filename="BitmapHandler.cpp" />
+		<Unit filename="BitmapHandler.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="BitmapObject.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Engine.cpp" />
+		<Unit filename="Engine.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="GameInterfaces.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="LineSegment.h">
+			<Option compile="1" />
+		</Unit>
+>>>>>>> Stashed changes
 		<Unit filename="Player.cpp" />
 		<Unit filename="Player.h">
 			<Option compile="1" />
 		</Unit>
+<<<<<<< Updated upstream
 		<Unit filename="Point2D.cpp" />
 		<Unit filename="Point2D.h">
 			<Option compile="1" />
@@ -91,12 +127,18 @@
 			<Option compile="1" />
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+=======
+		<Unit filename="Point2D.h">
+			<Option compile="1" />
+		</Unit>
+>>>>>>> Stashed changes
 		<Unit filename="PrimitiveRenderer.cpp" />
 		<Unit filename="PrimitiveRenderer.h">
 			<Option compile="1" />
 		</Unit>
 		<Unit filename="ShapeObject.h">
 			<Option compile="1" />
+<<<<<<< Updated upstream
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="TransformableObject.h">
@@ -109,6 +151,10 @@
 		</Unit>
 		<Unit filename="engine.cpp" />
 		<Unit filename="engine.h">
+=======
+		</Unit>
+		<Unit filename="SpriteObject.h">
+>>>>>>> Stashed changes
 			<Option compile="1" />
 		</Unit>
 		<Unit filename="main.cpp" />

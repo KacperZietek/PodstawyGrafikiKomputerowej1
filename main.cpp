@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 #include "Engine.h"
 #include "PrimitiveRenderer.h"
 #include "Point2D.h"
@@ -916,3 +917,15 @@ int main() {
 
     return 0;
 }
+=======
+#include "Engine.h"
+
+int main() {
+    // Teraz podajemy tylko tytu³ okna
+    if (Engine::getInstance().init("Projekt GK - Final Demo")) {
+        Engine::getInstance().run();
+    }
+
+    return 0;
+}
+>>>>>>> Stashed changes

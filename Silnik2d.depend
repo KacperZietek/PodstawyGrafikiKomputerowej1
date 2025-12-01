@@ -1,4 +1,5 @@
 # depslib dependency file v1.0
+<<<<<<< Updated upstream
 1763424376 source:d:\codeblocks projekty\podstawygrafikikomputerowej1\silnik2d\engine.cpp
 	"Engine.h"
 	<iostream>
@@ -11,6 +12,25 @@
 	<allegro5/allegro_primitives.h>
 	<string>
 	<fstream>
+=======
+1764601074 source:d:\codeblocks projekty\grafikakomputerowa\silnik2d\engine.cpp
+	"Engine.h"
+	<allegro5/allegro_primitives.h>
+	<iostream>
+	<cmath>
+	<algorithm>
+	<string>
+
+1764601141 d:\codeblocks projekty\grafikakomputerowa\silnik2d\engine.h
+	<allegro5/allegro.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<vector>
+	"PrimitiveRenderer.h"
+	"BitmapHandler.h"
+	"Player.h"
+	"ShapeObject.h"
+>>>>>>> Stashed changes
 
 1761574244 d:\allegro\include\allegro5\allegro.h
 	"allegro5/base.h"
@@ -293,9 +313,127 @@
 
 1761574244 d:\allegro\include\allegro5\alcompat.h
 
+<<<<<<< Updated upstream
 1761574245 d:\allegro\include\allegro5\allegro_image.h
 	"allegro5/base.h"
 
+=======
+1764519574 d:\codeblocks projekty\grafikakomputerowa\silnik2d\primitiverenderer.h
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+	<vector>
+	<stack>
+	<cmath>
+	"Point2D.h"
+
+1761574245 d:\allegro\include\allegro5\allegro_primitives.h
+	<allegro5/allegro.h>
+
+1764515240 d:\codeblocks projekty\grafikakomputerowa\silnik2d\point2d.h
+	<allegro5/allegro_primitives.h>
+
+1764515245 d:\codeblocks projekty\grafikakomputerowa\silnik2d\linesegment.h
+	"Point2D.h"
+
+1764600639 source:d:\codeblocks projekty\grafikakomputerowa\silnik2d\engine.h
+	<allegro5/allegro.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<vector>
+	"PrimitiveRenderer.h"
+	"BitmapHandler.h"
+	"Player.h"
+	"ShapeObject.h"
+
+1764515245 source:d:\codeblocks projekty\grafikakomputerowa\silnik2d\linesegment.h
+	"Point2D.h"
+
+1764524418 source:d:\codeblocks projekty\grafikakomputerowa\silnik2d\main.cpp
+	"Engine.h"
+
+1764515240 source:d:\codeblocks projekty\grafikakomputerowa\silnik2d\point2d.h
+	<allegro5/allegro_primitives.h>
+
+1764535783 source:d:\codeblocks projekty\grafikakomputerowa\silnik2d\primitiverenderer.cpp
+	"PrimitiveRenderer.h"
+	<iostream>
+	<cmath>
+	<algorithm>
+
+1764519574 source:d:\codeblocks projekty\grafikakomputerowa\silnik2d\primitiverenderer.h
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+	<vector>
+	<stack>
+	<cmath>
+	"Point2D.h"
+
+1764600593 d:\codeblocks projekty\grafikakomputerowa\silnik2d\shapeobject.h
+	"GameInterfaces.h"
+	<vector>
+	<cmath>
+
+1764534587 d:\codeblocks projekty\grafikakomputerowa\silnik2d\gameinterfaces.h
+	"PrimitiveRenderer.h"
+
+1764520960 d:\codeblocks projekty\grafikakomputerowa\silnik2d\bitmaphandler.h
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<string>
+	<map>
+
+1761574245 d:\allegro\include\allegro5\allegro_image.h
+	"allegro5/base.h"
+
+1764520984 source:d:\codeblocks projekty\grafikakomputerowa\silnik2d\bitmaphandler.cpp
+	"BitmapHandler.h"
+	<iostream>
+
+1764520960 source:d:\codeblocks projekty\grafikakomputerowa\silnik2d\bitmaphandler.h
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<string>
+	<map>
+
+1764534592 source:d:\codeblocks projekty\grafikakomputerowa\silnik2d\bitmapobject.h
+	"GameInterfaces.h"
+	"Point2D.h"
+	<allegro5/allegro.h>
+
+1764534587 source:d:\codeblocks projekty\grafikakomputerowa\silnik2d\gameinterfaces.h
+	"PrimitiveRenderer.h"
+
+1764600593 source:d:\codeblocks projekty\grafikakomputerowa\silnik2d\shapeobject.h
+	"GameInterfaces.h"
+	<vector>
+	<cmath>
+
+1764534604 d:\codeblocks projekty\grafikakomputerowa\silnik2d\player.h
+	"SpriteObject.h"
+	"BitmapHandler.h"
+	<allegro5/allegro.h>
+
+1764534598 d:\codeblocks projekty\grafikakomputerowa\silnik2d\spriteobject.h
+	"BitmapObject.h"
+
+1764534592 d:\codeblocks projekty\grafikakomputerowa\silnik2d\bitmapobject.h
+	"GameInterfaces.h"
+	"Point2D.h"
+	<allegro5/allegro.h>
+
+1764526637 source:d:\codeblocks projekty\grafikakomputerowa\silnik2d\player.cpp
+	"Player.h"
+	<iostream>
+
+1764534604 source:d:\codeblocks projekty\grafikakomputerowa\silnik2d\player.h
+	"SpriteObject.h"
+	"BitmapHandler.h"
+	<allegro5/allegro.h>
+
+1764534598 source:d:\codeblocks projekty\grafikakomputerowa\silnik2d\spriteobject.h
+	"BitmapObject.h"
+
+>>>>>>> Stashed changes
 1761574245 d:\allegro\include\allegro5\allegro_font.h
 	"allegro5/allegro.h"
 
@@ -303,6 +441,7 @@
 	"allegro5/allegro.h"
 	"allegro5/allegro_font.h"
 
+<<<<<<< Updated upstream
 1761574245 d:\allegro\include\allegro5\allegro_primitives.h
 	<allegro5/allegro.h>
 
@@ -1910,3 +2049,5 @@
 	"PrimitiveRenderer.h"
 	<allegro5/allegro_primitives.h>
 
+=======
+>>>>>>> Stashed changes

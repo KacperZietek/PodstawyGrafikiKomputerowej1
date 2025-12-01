@@ -3,6 +3,7 @@
 
 #include "Point2D.h"
 
+<<<<<<< Updated upstream
 
 enum LineAlgorithm {
     DEFAULT,
@@ -11,12 +12,16 @@ enum LineAlgorithm {
 
 class PrimitiveRenderer;
 
+=======
+// Klasa reprezentuj¹ca odcinek (Wymaganie Lab 02)
+>>>>>>> Stashed changes
 class LineSegment {
 private:
     Point2D start;
     Point2D end;
 
 public:
+<<<<<<< Updated upstream
     LineSegment(const Point2D& start = Point2D(), const Point2D& end = Point2D())
         : start(start), end(end) {}
 
@@ -42,6 +47,15 @@ public:
 
     // Dlugosc odcinka
     float length() const;
+=======
+    LineSegment(Point2D s, Point2D e) : start(s), end(e) {}
+
+    Point2D getStart() const { return start; }
+    Point2D getEnd() const { return end; }
+
+    void setStart(Point2D s) { start = s; }
+    void setEnd(Point2D e) { end = e; }
+>>>>>>> Stashed changes
 };
 
 #endif

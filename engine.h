@@ -2,93 +2,98 @@
 #define ENGINE_H
 
 #include <allegro5/allegro.h>
-#include <allegro5/allegro_image.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
-#include <allegro5/allegro_primitives.h>
-#include <string>
-#include <fstream>
-
-// DODAJ TE INCLUDE
+#include <vector>
 #include "PrimitiveRenderer.h"
-#include "Point2D.h"
-#include "LineSegment.h"
-#include "PointShape.h"
-#include "LineShape.h"
+#include "BitmapHandler.h"
 #include "Player.h"
 #include "ShapeObject.h"
 
-enum DisplayMode {
-    WINDOWED,
-    FULLSCREEN
+// Tryby rysowania
+enum EditorMode {
+    MODE_NONE,
+    MODE_RECT,
+    MODE_CIRCLE,
+    MODE_TRIANGLE,
+    MODE_ELLIPSE,
+    MODE_LINE
 };
-
-class ComprehensiveDemo; // Forward declaration
 
 class Engine {
 private:
-    ALLEGRO_DISPLAY* display;
-    ALLEGRO_EVENT_QUEUE* event_queue;
-    ALLEGRO_TIMER* timer;
-    ALLEGRO_FONT* font;
-    ALLEGRO_BITMAP* buffer; // Bufor posredni
+    Engine();
 
-    int screen_width;
-    int screen_height;
-    DisplayMode display_mode;
-    int fps;
-    bool running;
-    bool mouse_installed;
-    bool keyboard_installed;
-    bool double_buffering;
+    ALLEGRO_DISPLAY* display = nullptr;
+    ALLEGRO_EVENT_QUEUE* eventQueue = nullptr;
+    ALLEGRO_TIMER* timer = nullptr;
+    ALLEGRO_FONT* font = nullptr;
 
-    std::ofstream log_file;
+    bool isRunning = false;
+    const float FPS = 144.0f;
 
-    bool initialize_graphics();
-    bool initialize_input();
-    void cleanup();
+    const int LOGICAL_WIDTH = 800;
+    const int LOGICAL_HEIGHT = 600;
+
+    float scale = 1.0f;
+    float offsetX = 0.0f;
+    float offsetY = 0.0f;
+
+    ALLEGRO_BITMAP* buffer = nullptr;
+
+    PrimitiveRenderer* renderer = nullptr;
+    BitmapHandler* bitmapHandler = nullptr;
+
+    // Obiekty
+    Player* player = nullptr;
+    ShapeObject* rotatingTriangle = nullptr;
+    ShapeObject* pulsingRect = nullptr;
+    ShapeObject* star = nullptr;
+
+    // Edytor
+    std::vector<ShapeObject*> drawnShapes;
+    EditorMode currentMode = MODE_NONE;
+    bool isDrawing = false;
+    Point2D startDragPos;
+    Point2D currentMousePos;
+
+    float globalTime = 0.0f;
+    bool isFullscreen = false;
+
+    // --- NOWOŚĆ: Zmienne do licznika FPS ---
+    double lastFpsTime = 0.0; // Kiedy ostatnio liczyliśmy
+    int frameCount = 0;       // Ile klatek w tej sekundzie
+    int displayedFPS = 0;     // Wartość do wyświetlenia
+    // ----------------------------------------
+
+    void processEvents();
+    void update();
+    void render();
+    void toggleFullscreen();
+    void updateScaleFactors();
+
+    bool checkCollision(float x1, float y1, float w1, float h1,
+                        float x2, float y2, float w2, float h2);
+
+    void createShapeFromInput();
+    void renderPreviewShape();
 
 public:
-    Engine();
-    virtual ~Engine();
+    Engine(const Engine&) = delete;
+    void operator=(const Engine&) = delete;
+    ~Engine();
 
-    bool initialize(int width = 800, int height = 600,
-                   DisplayMode mode = WINDOWED, int target_fps = 60,
-                   bool use_double_buffering = true);
+    static Engine& getInstance();
+
+    bool init(const char* title);
     void run();
-    void stop();
+    void cleanup();
 
-    void begin_frame();
-    void end_frame();
+    PrimitiveRenderer* getRenderer() { return renderer; }
+    BitmapHandler* getBitmapHandler() { return bitmapHandler; }
 
-    void clear_screen(ALLEGRO_COLOR color);
-    void clear_bitmap(ALLEGRO_BITMAP* bitmap, ALLEGRO_COLOR color);
-
-    void log_message(const std::string& message);
-    void show_error(const std::string& error);
-
-    // NEW: Fullscreen methods
-    void toggle_fullscreen();
-    bool set_display_mode(DisplayMode mode);
-
-    // Gettery
-    int get_screen_width() const { return screen_width; }
-    int get_screen_height() const { return screen_height; }
-    DisplayMode get_display_mode() const { return display_mode; }
-    bool is_running() const { return running; }
-    ALLEGRO_FONT* get_font() const { return font; }
-    ALLEGRO_BITMAP* get_buffer() const { return buffer; }
-
-    virtual void update(float delta_time) {}
-    virtual void render() {}
-    virtual void handle_input() {}
-    virtual void on_key_press(int key) {}
-    virtual void on_key_release(int key) {}
-    virtual void on_mouse_click(int button, int x, int y) {}
-    virtual void on_mouse_move(int x, int y) {}
-
-    // DODANA METODA dla przekazywania zdarze�
-    virtual void forwardEventToPlayer(const ALLEGRO_EVENT& ev) {}
+    int getLogicalWidth() const { return LOGICAL_WIDTH; }
+    int getLogicalHeight() const { return LOGICAL_HEIGHT; }
 };
 
 #endif
